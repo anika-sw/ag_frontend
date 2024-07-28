@@ -4,6 +4,7 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 RUN npm run build
+RUN npm install -g serve
 
 # FROM nginx:1.22.1-alpine as prod-stage - original from article
 FROM nginx:alpine
