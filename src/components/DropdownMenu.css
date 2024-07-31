@@ -21,7 +21,7 @@
   width: 100%;
   border: 1px solid #ccc;
   border-top: none;
-  background-color: white;
+  /* background-color: white; */
   z-index: 1;
   max-height: 150px;
   overflow-y: auto;
