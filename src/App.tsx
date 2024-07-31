@@ -17,9 +17,9 @@ const App: React.FC = () => {
   return (
     <div>
       <h1>AutomatedGroove</h1>
-      <DropdownMenu options={["rock", "pop", "edm", "hiphop", "country"]} onSelect={handleSelect('genre')} />
-      <DropdownMenu options={["slow", "medium", "fast"]} onSelect={handleSelect('tempo')} />
-      <DropdownMenu options={["happy", "sad", "angry", "romantic", "euphoric"]} onSelect={handleSelect('mood')} />
+      <DropdownMenu title="Genre" options={["rock", "pop", "edm", "hiphop", "country"]} onSelect={handleSelect('genre')} />
+      <DropdownMenu title="Tempo" options={["slow", "medium", "fast"]} onSelect={handleSelect('tempo')} />
+      <DropdownMenu title="Mood" options={["happy", "sad", "angry", "romantic", "euphoric"]} onSelect={handleSelect('mood')} />
       <GenerateSongButton genre={genre} mood={mood} tempo={tempo} />
     </div>
   );

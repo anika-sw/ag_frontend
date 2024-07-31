@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import './DropdownMenu.css';
 
 interface DropdownMenuProps {
+  title: string;
   options: string[];
   onSelect: (selectedOption: string) => void;
-  placeholder?: string;
 }
 
-const DropdownMenu: React.FC<DropdownMenuProps> = ({ options, onSelect, placeholder = "Select an option" }) => {
+const DropdownMenu: React.FC<DropdownMenuProps> = ({ options, onSelect, title }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
@@ -20,7 +20,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ options, onSelect, placehol
   return (
     <div className="dropdown">
       <div className="dropdown-header" onClick={() => setIsOpen(!isOpen)}>
-        {selectedOption ? selectedOption : placeholder}
+        {selectedOption ? selectedOption : title}
         <span className="dropdown-arrow">{isOpen ? '▲' : '▼'}</span>
       </div>
       {isOpen && (
