@@ -5,3 +5,9 @@ Streaming services automatically scan audio for copyrighted content, and mutes o
 #Anika here!
 # sunny here
 # kit here
+
+LOCAL START UP QUICK INSTRUCTIONS
+
+- make sure the back end is started with flask
+- start on local machine with:
+    npm run dev
