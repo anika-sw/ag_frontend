@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
+import './DropdownMenu.css';
 
-interface DropdownProps {
+interface DropdownMenuProps {
   options: string[];
   onSelect: (selectedOption: string) => void;
   placeholder?: string;
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ options, onSelect, placeholder = "Select an option" }) => {
+const DropdownMenu: React.FC<DropdownMenuProps> = ({ options, onSelect, placeholder = "Select an option" }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
@@ -35,4 +36,4 @@ const Dropdown: React.FC<DropdownProps> = ({ options, onSelect, placeholder = "S
   );
 };
 
-export default Dropdown;
+export default DropdownMenu;

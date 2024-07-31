@@ -1,0 +1,38 @@
+/* src/components/Dropdown.css */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 200px;
+}
+
+.dropdown-header {
+  padding: 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-top: none;
+  background-color: white;
+  z-index: 1;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.dropdown-list-item {
+  padding: 10px;
+  cursor: pointer;
+  list-style-type: none;
+}
+
+.dropdown-list-item:hover {
+  background-color: #f0f0f0;
+}
