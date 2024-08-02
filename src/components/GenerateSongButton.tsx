@@ -1,4 +1,5 @@
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 interface ButtonProps {
   genre: string;
@@ -6,12 +7,17 @@ interface ButtonProps {
   tempo: string;
 }
 
+
+
 const GenerateSongButton: React.FC<ButtonProps> = ({ genre, mood, tempo }) => {
+
+  const uniqueId = uuidv4();
+
   const handleClick = async () => {
     try {
       const response = await fetch('http://flask-env.eba-np4xpmaq.us-east-2.elasticbeanstalk.com/create_song',
       // const response = await fetch('http://localhost:5000/create_song'
-       {
+      {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
