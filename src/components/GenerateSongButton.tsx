@@ -1,5 +1,4 @@
 import React from 'react';
-import { v4 as uuidv4 } from 'uuid';
 
 interface ButtonProps {
   genre: string;
@@ -8,10 +7,7 @@ interface ButtonProps {
 }
 
 
-
 const GenerateSongButton: React.FC<ButtonProps> = ({ genre, mood, tempo }) => {
-
-  const uniqueId = uuidv4();
 
   const handleClick = async () => {
     try {
