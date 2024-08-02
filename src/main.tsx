@@ -13,7 +13,8 @@ if (!crypto.randomUUID) {
   };
 }
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+//needs an exclamation point after ('root')!
+ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
