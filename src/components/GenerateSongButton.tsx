@@ -8,10 +8,12 @@ interface ButtonProps {
 }
 
 const GenerateSongButton: React.FC<ButtonProps> = ({ genre, mood, tempo }) => {
-
   const handleClick = async () => {
     try {
-      const [response1, response2] = await Promise.all([apiCall1(), apiCall2()]);
+      const [response1, response2] = await Promise.all([
+        apiCall1(genre, mood, tempo),
+        apiCall2(genre, mood, tempo),
+      ]);
       console.log('Response 1:', response1);
       console.log('Response 2:', response2);
     } catch (error) {
