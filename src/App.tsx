@@ -15,10 +15,10 @@ const App: React.FC = () => {
     else if (type === 'tempo') setTempo(selectedOption);
     else if (type === 'genre') setGenre(selectedOption);
 
-  const onChange = () => {};
-  
   };
 
+  const onChange = () => {};
+  
   return (
     <div>
       <h1>AutomatedGroove</h1>
@@ -26,7 +26,7 @@ const App: React.FC = () => {
       <DropdownMenu placeholder="Tempo" options={["slow", "medium", "fast"]} onSelect={handleSelect('tempo')} />
       <DropdownMenu placeholder="Mood" options={["happy", "sad", "angry", "romantic", "euphoric"]} onSelect={handleSelect('mood')} />
       <GenerateSongButton genre={genre} mood={mood} tempo={tempo} />
-      <ReCAPTCHA sitekey="6LfI_RsqAAAAACEnGBBLuWFGY6HqSTJBRZd9A-sG" onChange={onChange}/>
+      <ReCAPTCHA sitekey="Your client site key" onChange={onChange}/>
     </div>
   );
 };
