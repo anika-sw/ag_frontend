@@ -9,35 +9,71 @@ interface ButtonProps {
 }
 
 const GenerateSongButton: React.FC<ButtonProps> = ({ genre, mood, tempo }) => {
-  const [songName, setSongName] = useState(''); // State to store the response from response2
+  const [songName, setSongName] = useState('');
+  const [isLoading, setIsLoading] = useState(false);  // State to track loading status
 
   const handleClick = async () => {
+    setIsLoading(true); // Start loading
     try {
       const [response1, response2] = await Promise.all([
         apiCall1(genre, mood, tempo),
         apiCall2(genre, mood, tempo),
       ]);
-      console.log('Response 1:', response1);
-      console.log('Response 2:', response2);
-
-      setSongName(response2); // Update the state with the result from response2
+      setSongName(response2); // Update the song name
     } catch (error) {
       console.error('Error:', error);
-      setSongName('Error generating song'); // Update state in case of an error
+      setSongName('Error generating song'); // Display error
     }
+    setIsLoading(false); // End loading
   };
 
   return (
     <>
-      <button onClick={handleClick}>Generate Song</button>
+      <button onClick={handleClick} disabled={isLoading}>Generate Song</button>
       <div>
-        {songName}
+        {isLoading ? 'Loading...' : songName} 
       </div>
     </>
   );
 };
 
 export default GenerateSongButton;
+
+
+
+
+
+// const GenerateSongButton: React.FC<ButtonProps> = ({ genre, mood, tempo }) => {
+//   const [songName, setSongName] = useState(''); // State to store the response from response2
+
+//   const handleClick = async () => {
+//     try {
+//       const [response1, response2] = await Promise.all([
+//         apiCall1(genre, mood, tempo),
+//         apiCall2(genre, mood, tempo),
+//       ]);
+//       console.log('Response 1:', response1);
+//       console.log('Response 2:', response2);
+
+//       setSongName(response2); // Update the state with the result from response2
+//     } catch (error) {
+//       console.error('Error:', error);
+//       setSongName('Error generating song'); // Update state in case of an error
+//     }
+//   };
+
+//   return (
+//     <>
+//       <button onClick={handleClick}>Generate Song</button>
+//       <div>
+//         {songName}
+//       </div>
+//     </>
+//   );
+// };
+
+// export default GenerateSongButton;
+
 
 
 
