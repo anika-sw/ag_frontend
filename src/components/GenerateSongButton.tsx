@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { apiCall1, apiCall2 } from '../api'
 
+// Assuming ButtonProps is defined somewhere else in your project
 interface ButtonProps {
   genre: string;
   mood: string;
@@ -8,6 +9,8 @@ interface ButtonProps {
 }
 
 const GenerateSongButton: React.FC<ButtonProps> = ({ genre, mood, tempo }) => {
+  const [songName, setSongName] = useState(''); // State to store the response from response2
+
   const handleClick = async () => {
     try {
       const [response1, response2] = await Promise.all([
@@ -16,43 +19,25 @@ const GenerateSongButton: React.FC<ButtonProps> = ({ genre, mood, tempo }) => {
       ]);
       console.log('Response 1:', response1);
       console.log('Response 2:', response2);
+
+      setSongName(response2); // Update the state with the result from response2
     } catch (error) {
       console.error('Error:', error);
+      setSongName('Error generating song'); // Update state in case of an error
     }
   };
 
-  return <button onClick={handleClick}>Generate Song</button>;
+  return (
+    <>
+      <button onClick={handleClick}>Generate Song</button>
+      <div>
+        {songName}
+      </div>
+    </>
+  );
 };
 
 export default GenerateSongButton;
-
-
-  // const handleClick = async () => {
-  //   try {
-  //     const response = await fetch('http://flask-env.eba-np4xpmaq.us-east-2.elasticbeanstalk.com/create_song',
-  //     // const response = await fetch('http://localhost:5000/create_song'
-  //     {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({
-  //         genre: [genre],
-  //         mood: [mood],
-  //         tempo: [tempo],
-  //       }),
-  //     });
-
-  //     if (!response.ok) {
-  //       throw new Error('Network response was not ok');
-  //     }
-
-  //     const data = await response.json();
-  //     console.log('Song generated:', data);
-  //   } catch (error) {
-  //     console.error('Error generating song:', error);
-  //   }
-  // };
 
 
 
