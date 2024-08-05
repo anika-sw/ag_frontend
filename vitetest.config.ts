@@ -9,3 +9,9 @@ export default defineConfig({
     environment: 'jsdom',
   },
 });
+
+require('dotenv').config();
+
+module.exports = {
+  apiKey: process.env.REACT_APP_API_KEY,
+};

@@ -18,7 +18,9 @@ const App: React.FC = () => {
   };
 
   const onChange = () => {};
-  
+  const apiKey: string = process.env.REACT_APP_RECAPTCHA_SITE_KEY || '';
+
+
   return (
     <div>
       <h1>AutomatedGroove</h1>
@@ -26,7 +28,8 @@ const App: React.FC = () => {
       <DropdownMenu placeholder="Tempo" options={["slow", "medium", "fast"]} onSelect={handleSelect('tempo')} />
       <DropdownMenu placeholder="Mood" options={["happy", "sad", "angry", "romantic", "euphoric"]} onSelect={handleSelect('mood')} />
       <GenerateSongButton genre={genre} mood={mood} tempo={tempo} />
-      <ReCAPTCHA sitekey="Your client site key" onChange={onChange}/>
+      {/* need to store site key somewhere safe */}
+      <ReCAPTCHA sitekey={apiKey} onChange={onChange}/>
     </div>
   );
 };
