@@ -3,6 +3,8 @@ import DropdownMenu from './components/DropdownMenu';
 import GenerateSongButton from './components/GenerateSongButton';
 import './App.css';
 
+import ReCAPTCHA from "react-google-recaptcha";
+
 const App: React.FC = () => {
   const [mood, setMood] = useState<string>('');
   const [tempo, setTempo] = useState<string>('');
@@ -12,6 +14,9 @@ const App: React.FC = () => {
     if (type === 'mood') setMood(selectedOption);
     else if (type === 'tempo') setTempo(selectedOption);
     else if (type === 'genre') setGenre(selectedOption);
+
+  const onChange = () => {};
+  
   };
 
   return (
@@ -21,6 +26,7 @@ const App: React.FC = () => {
       <DropdownMenu placeholder="Tempo" options={["slow", "medium", "fast"]} onSelect={handleSelect('tempo')} />
       <DropdownMenu placeholder="Mood" options={["happy", "sad", "angry", "romantic", "euphoric"]} onSelect={handleSelect('mood')} />
       <GenerateSongButton genre={genre} mood={mood} tempo={tempo} />
+      <ReCAPTCHA sitekey="6LfI_RsqAAAAACEnGBBLuWFGY6HqSTJBRZd9A-sG" onChange={onChange}/>
     </div>
   );
 };
