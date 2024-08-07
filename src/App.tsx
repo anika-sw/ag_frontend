@@ -17,6 +17,8 @@ const App: React.FC = () => {
   };
 
   const onChange = () => {};
+
+  // i got the angry red line to go away by adding "vite-env.d.ts" to the tsconfig.json file"
   const apiKey: string = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
   return (
@@ -27,7 +29,7 @@ const App: React.FC = () => {
       <DropdownMenu placeholder="Mood" options={["happy", "sad", "angry", "romantic", "euphoric"]} onSelect={handleSelect('mood')} />
       <ReCAPTCHA sitekey={apiKey} onChange={onChange} />
       <GenerateSongButton genre={genre} mood={mood} tempo={tempo} setSongUrl={setSongUrl} />
-      <audio src={songUrl} controls />
+      <audio src={songUrl} controls data-testid="audio-player"/>
     </div>
   );
 };

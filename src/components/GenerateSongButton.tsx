@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { apiCall1, apiCall2 } from '../api';
+import { apiCall1, apiCall2 } from '../../utils/api';
 
 interface ButtonProps {
   genre: string;
@@ -75,8 +75,3 @@ export default GenerateSongButton;
 // };
 
 // export default GenerateSongButton;
-
-
-
-
-

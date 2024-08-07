@@ -16,6 +16,6 @@
       "noEmit": true,
       "jsx": "react-jsx"
     },
-    "include": ["src", "src/setupTests.tsx"]
+    "include": ["src", "tests/setupTests.ts", "tests/app.test.tsx", "vite-env.d.ts", "utils/api.tsx"]
   }
   
