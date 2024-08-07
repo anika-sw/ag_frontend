@@ -20,11 +20,15 @@ const App: React.FC = () => {
 
   // i got the angry red line to go away by adding "vite-env.d.ts" to the tsconfig.json file"
   // const apiKey: string = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
-  
-  // const apiKey = process.env.sitekey
+
+  const apiKey = process.env.sitekey
+
+  // Troubleshooting attempts
 
   // sitekey="6LfI_RsqAAAAACEnGBBLuWFGY6HqSTJBRZd9A-sG" no env var in AWS
-  //  returned error: 
+  //  returned error: Error: Missing required parameters: sitekey
+
+  // const apiKey = process.env.sitekey
 
 
   return (
@@ -33,7 +37,7 @@ const App: React.FC = () => {
       <DropdownMenu placeholder="Genre" options={["rock", "pop", "edm", "hiphop", "country"]} onSelect={handleSelect('genre')} />
       <DropdownMenu placeholder="Tempo" options={["slow", "medium", "fast"]} onSelect={handleSelect('tempo')} />
       <DropdownMenu placeholder="Mood" options={["happy", "sad", "angry", "romantic", "euphoric"]} onSelect={handleSelect('mood')} />
-      <ReCAPTCHA sitekey="6LfI_RsqAAAAACEnGBBLuWFGY6HqSTJBRZd9A-sG" onChange={onChange} />
+      <ReCAPTCHA sitekey={apiKey} onChange={onChange} />
       <GenerateSongButton genre={genre} mood={mood} tempo={tempo} setSongUrl={setSongUrl} />
       <audio src={songUrl} controls data-testid="audio-player"/>
     </div>
