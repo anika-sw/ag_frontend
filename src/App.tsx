@@ -20,10 +20,12 @@ const App: React.FC = () => {
 
   // i got the angry red line to go away by adding "vite-env.d.ts" to the tsconfig.json file"
   // const apiKey: string = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
+  
   // const apiKey = process.env.sitekey
 
-  // sitekey="6LfI_RsqAAAAACEnGBBLuWFGY6HqSTJBRZd9A-sG"
-   
+  // sitekey="6LfI_RsqAAAAACEnGBBLuWFGY6HqSTJBRZd9A-sG" no env var in AWS
+  //  returned error: 
+
 
   return (
     <div>
