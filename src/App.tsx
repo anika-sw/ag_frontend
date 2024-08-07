@@ -19,9 +19,10 @@ const App: React.FC = () => {
   const onChange = () => {};
 
   // i got the angry red line to go away by adding "vite-env.d.ts" to the tsconfig.json file"
-  // const apiKey: string = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
+  const apiKey: string = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
+  console.log(apiKey);
 
-  const apiKey = process.env.sitekey
+  // const apiKey = process.env.sitekey
 
   // Troubleshooting attempts
 
