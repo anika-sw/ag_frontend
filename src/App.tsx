@@ -6,14 +6,14 @@ import ReCAPTCHA from "react-google-recaptcha";
 import RefreshInputMenusButton from './components/RefreshInputMenusButton';
 import ResubmitPromptButton from './components/ResubmitPromptButton';
 
-// declare global {
-//   interface Window {
-//     grecaptcha: {
-//       ready: (callback: () => void) => void;
-//       execute: (siteKey: string, params: { action: string }) => Promise<string>;
-//     };
-//   }
-// }
+declare global {
+  interface Window {
+    grecaptcha: {
+      ready: (callback: () => void) => void;
+      execute: (siteKey: string, params: { action: string }) => Promise<string>;
+    };
+  }
+}
 
 const App: React.FC = () => {
   const [mood, setMood] = useState<string>('');
@@ -22,6 +22,7 @@ const App: React.FC = () => {
   const [songUrl, setSongUrl] = useState<string>('');
   const [songName, setSongName] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [captchaToken, setCaptchaToken] = useState<string>('');
 
   // removed handleSelect functions per Ansel's recommendation. Passed setter
   // functions via the onSelect prop in the DropdownMenu components.
@@ -37,30 +38,28 @@ const App: React.FC = () => {
   const onChange = () => {};
 
   
-  // function MyComponent() {
-  //   const [captchaToken, setCaptchaToken] = useState<string>('');
+  useEffect(() => {
+    const onCaptchaChange = (token: string) => {
+      setCaptchaToken(token);
+    };
+
+    window.grecaptcha.ready(() => {
+      window.grecaptcha.execute('6LfI_RsqAAAAACEnGBBLuWFGY6HqSTJBRZd9A-sG', { action: 'homepage' }).then(onCaptchaChange);
+    });
+  }, []);
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    // Send captchaToken to your backend for verification
+  };
   
-  //   useEffect(() => {
-  //     const onCaptchaChange = (token: string) => {
-  //       setCaptchaToken(token);
-  //     };
-  //     window.grecaptcha.ready(() => {
-  //       window.grecaptcha.execute('6LfI_RsqAAAAACEnGBBLuWFGY6HqSTJBRZd9A-sG', { action: 'homepage' }).then(onCaptchaChange);
-  //     });
-  //   }, []);
-  
-  //   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-  //     event.preventDefault();
-  //     // Send captchaToken to your backend for verification
-  //   };
-  // }
 
 
-// code below doesn't crash, but also doesn't show the recaptcha...
-  const siteKey: string = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
-  console.log("printing import.meta.env:", import.meta.env);
-  console.log("printing siteKey:", siteKey);
-// works no recactcha 
+// code below returned error: Error: Missing required parameters: sitekey
+  // const siteKey: string = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
+  // console.log("printing import.meta.env:", import.meta.env);
+  // console.log("printing siteKey:", siteKey);
+
 
 
   // Troubleshooting attempts
@@ -77,11 +76,10 @@ const App: React.FC = () => {
       <DropdownMenu placeholder="Genre" options={["rock", "pop", "edm", "hiphop", "country"]} onSelect={setMood} />
       <DropdownMenu placeholder="Tempo" options={["slow", "medium", "fast"]} onSelect={setTempo} />
       <DropdownMenu placeholder="Mood" options={["happy", "sad", "angry", "romantic", "euphoric"]} onSelect={setGenre} />
-      <ReCAPTCHA sitekey={siteKey} onChange={onChange} />
-      {/* <form onSubmit={handleSubmit}> */}
-        {/* Your form elements */}
-        {/* <button type="submit">Submit</button> */}
-      {/* </form> */}
+      {/* <ReCAPTCHA sitekey={siteKey} onChange={onChange} /> */}
+      <form onSubmit={handleSubmit}>
+        <button type="submit">Submit</button>
+      </form> );
       <GenerateSongButton 
         genre={genre} 
         mood={mood} 
