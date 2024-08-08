@@ -2,22 +2,38 @@ import { http, HttpResponse } from 'msw';
 import { mockSongNameResponse, mockSongFileResponse } from './mockData';
 
 export const handlers = [
-  // Define a POST request handler for the endpoint 'http://example.com/api/song'
   http.post('http://localhost:5000/create_song', async ({ request }) => {
-    // Optionally, you can inspect the request if needed
-    // const requestData = await request.json();
-
-    // Return a mock response
-    return HttpResponse.json(mockSongFileResponse, { status: 200 });
+    // // inspect the request if needed
+    // console.log('Handler', request.method, request.url)
+    return HttpResponse.json(mockSongFileResponse, { status: 201 });
   }),
 
   http.post('http://localhost:5000/create_song_name', async ({ request }) => {
-    // Optionally, you can inspect the request if needed
-    // const requestData = await request.json();
+    return HttpResponse.json(mockSongNameResponse, { status: 201 });
+  }),
 
-    // Return a mock response
-    return HttpResponse.json(mockSongNameResponse, { status: 200 });
+  // src attribute of audio element in App creates a GET request to fetch the song
+  http.get('http://mock_musicfy_api.com/song.mp3', async ({ request }) => {
+    return new HttpResponse(null, {
+      status: 200,
+      statusText: 'OK: song loaded into audio player',
+    })
   }),
 
   // You can add more handlers here as needed for other endpoints
 ];
+
+// // mocking error response 
+// export const handlers = [
+//   http.get('/user', () => {
+//     // Respond with "401 Unauthorized" to "GET /user" requests.
+//     return new HttpResponse(null, { status: 401 })
+//   }),
+// ]
+
+// // mocking network error
+// export const handlers = [
+//   http.post('/checkout/cart', () => {
+//     return HttpResponse.error()
+//   }),
+// ]

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { apiCall1, apiCall2 } from '../../utils/api';
 
 interface ButtonProps {
@@ -6,12 +6,11 @@ interface ButtonProps {
   mood: string;
   tempo: string;
   setSongUrl: (url: string) => void;
-  setSongName: (name: string) => void;
-  isLoading: boolean;
-  setIsLoading: (loading: boolean) => void;
 }
 
-const GenerateSongButton: React.FC<ButtonProps> = ({ genre, mood, tempo, setSongUrl, setSongName, isLoading, setIsLoading }) => {
+const RefreshInputMenusButton: React.FC<ButtonProps> = ({ genre, mood, tempo, setSongUrl }) => {
+  const [songName, setSongName] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleClick = async () => {
     setIsLoading(true);
@@ -31,9 +30,9 @@ const GenerateSongButton: React.FC<ButtonProps> = ({ genre, mood, tempo, setSong
 
   return (
     <>
-      <button onClick={handleClick} disabled={isLoading}>Generate Song</button>
+      <button onClick={handleClick} disabled={isLoading}>Refresh Input</button>
     </>
   );
 };
 
-export default GenerateSongButton;
+export default RefreshInputMenusButton;
