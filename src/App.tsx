@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import DropdownMenu from './components/DropdownMenu';
 import GenerateSongButton from './components/GenerateSongButton';
-import './App.css';
-// import ReCAPTCHA from "react-google-recaptcha";
 import RefreshInputMenusButton from './components/RefreshInputMenusButton';
 import ResubmitPromptButton from './components/ResubmitPromptButton';
+import './App.css';
 
 declare global {
   interface Window {
@@ -28,15 +27,6 @@ const App: React.FC = () => {
   // functions via the onSelect prop in the DropdownMenu components.
 
   // const onChange = () => {};
-
-  const handleSelect = (type: 'mood' | 'tempo' | 'genre') => (selectedOption: string) => {
-    if (type === 'mood') setMood(selectedOption);
-    else if (type === 'tempo') setTempo(selectedOption);
-    else if (type === 'genre') setGenre(selectedOption);
-  };
-
-  const onChange = () => {};
-
   
   useEffect(() => {
     // const script = document.createElement('script'); 
@@ -72,17 +62,24 @@ const App: React.FC = () => {
 
   // const apiKey = process.env.sitekey
 
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.load();
+    }
+  }, [songUrl]);
 
   return (
     <div>
       <h1>AutomatedGroove</h1>
-      <DropdownMenu placeholder="Genre" options={["rock", "pop", "edm", "hiphop", "country"]} onSelect={setMood} />
-      <DropdownMenu placeholder="Tempo" options={["slow", "medium", "fast"]} onSelect={setTempo} />
-      <DropdownMenu placeholder="Mood" options={["happy", "sad", "angry", "romantic", "euphoric"]} onSelect={setGenre} />
       {/* <ReCAPTCHA sitekey={siteKey} onChange={onChange} /> */}
       <form onSubmit={handleSubmit}>
         <button type="submit">Submit</button>
-      </form> );
+      </form>;
+      <DropdownMenu placeholder="Genre" options={["rock", "pop", "edm", "hiphop", "country"]} selectedOption={genre} onSelect={setGenre} />
+      <DropdownMenu placeholder="Tempo" options={["slow", "medium", "fast"]} selectedOption={tempo} onSelect={setTempo} />
+      <DropdownMenu placeholder="Mood" options={["happy", "sad", "angry", "romantic", "euphoric"]} selectedOption={mood} onSelect={setMood} />
       <GenerateSongButton 
         genre={genre} 
         mood={mood} 
@@ -94,8 +91,14 @@ const App: React.FC = () => {
       <div>
         {isLoading ? 'Loading...' : songName}
       </div>
-      <audio src={songUrl} controls data-testid="audio-player"/>
-      <RefreshInputMenusButton genre={genre} mood={mood} tempo={tempo} setSongUrl={setSongUrl}/>
+      <audio ref={audioRef} src={songUrl} controls data-testid="audio-player"/>
+      <RefreshInputMenusButton 
+        setMood={setMood}
+        setTempo={setTempo}
+        setGenre={setGenre}
+        setSongUrl={setSongUrl}
+        setSongName={setSongName}
+        setIsLoading={setIsLoading}/>
       <ResubmitPromptButton
         genre={genre} 
         mood={mood} 

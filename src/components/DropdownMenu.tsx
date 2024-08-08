@@ -1,19 +1,23 @@
-import React, { useState } from 'react';
+
+// components/DropdownMenu.tsx
+import React, { useState, useEffect } from 'react';
 import './DropdownMenu.css';
 
 interface DropdownMenuProps {
   placeholder: string;
   options: string[];
+  selectedOption: string;
   onSelect: (selectedOption: string) => void;
 }
 
-const DropdownMenu: React.FC<DropdownMenuProps> = ({ options, onSelect, placeholder }) => {
+const DropdownMenu: React.FC<DropdownMenuProps> = ({ options, onSelect, placeholder, selectedOption }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [selectedOption]);
 
   const handleOptionClick = (option: string) => {
-    setSelectedOption(option);
-    setIsOpen(false);
     onSelect(option);
   };
 
