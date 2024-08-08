@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import DropdownMenu from './components/DropdownMenu';
 import GenerateSongButton from './components/GenerateSongButton';
 import './App.css';
-import ReCAPTCHA from "react-google-recaptcha";
+// import ReCAPTCHA from "react-google-recaptcha";
 import RefreshInputMenusButton from './components/RefreshInputMenusButton';
 import ResubmitPromptButton from './components/ResubmitPromptButton';
 
@@ -38,15 +38,14 @@ const App: React.FC = () => {
   const onChange = () => {};
 
   
-  useEffect(() => {
-    const onCaptchaChange = (token: string) => {
-      setCaptchaToken(token);
-    };
+  useEffect(() => { const script = document.createElement('script'); script.src = "https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad"; script.async = true; document.body.appendChild(script);
 
     window.grecaptcha.ready(() => {
       window.grecaptcha.execute('6LfI_RsqAAAAACEnGBBLuWFGY6HqSTJBRZd9A-sG', { action: 'homepage' }).then(onCaptchaChange);
     });
   }, []);
+  
+  const onCaptchaChange = (token: string) => { setCaptchaToken(token); };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
