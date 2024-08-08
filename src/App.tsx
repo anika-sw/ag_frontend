@@ -38,7 +38,11 @@ const App: React.FC = () => {
   const onChange = () => {};
 
   
-  useEffect(() => { const script = document.createElement('script'); script.src = "https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad"; script.async = true; document.body.appendChild(script);
+  useEffect(() => {
+    // const script = document.createElement('script'); 
+    // script.src = "https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad";
+    // script.async = true;
+    // document.body.appendChild(script);
 
     window.grecaptcha.ready(() => {
       window.grecaptcha.execute('6LfI_RsqAAAAACEnGBBLuWFGY6HqSTJBRZd9A-sG', { action: 'homepage' }).then(onCaptchaChange);
