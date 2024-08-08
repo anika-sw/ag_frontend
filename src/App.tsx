@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import DropdownMenu from './components/DropdownMenu';
 import GenerateSongButton from './components/GenerateSongButton';
 import './App.css';
-// import ReCAPTCHA from "react-google-recaptcha";
+import ReCAPTCHA from "react-google-recaptcha";
 import RefreshInputMenusButton from './components/RefreshInputMenusButton';
 import ResubmitPromptButton from './components/ResubmitPromptButton';
 
@@ -56,13 +56,12 @@ const App: React.FC = () => {
   // }
 
 
-  // i got the angry red line to go away by adding "vite-env.d.ts" to the tsconfig.json file"
-
+// code below doesn't crash, but also doesn't show the recaptcha...
   const siteKey: string = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
   console.log("printing import.meta.env:", import.meta.env);
   console.log("printing siteKey:", siteKey);
+// works no recactcha 
 
-  // const apiKey = process.env.sitekey
 
   // Troubleshooting attempts
 
@@ -78,7 +77,7 @@ const App: React.FC = () => {
       <DropdownMenu placeholder="Genre" options={["rock", "pop", "edm", "hiphop", "country"]} onSelect={setMood} />
       <DropdownMenu placeholder="Tempo" options={["slow", "medium", "fast"]} onSelect={setTempo} />
       <DropdownMenu placeholder="Mood" options={["happy", "sad", "angry", "romantic", "euphoric"]} onSelect={setGenre} />
-      {/* <ReCAPTCHA sitekey={siteKey} onChange={onChange} /> */}
+      <ReCAPTCHA sitekey={siteKey} onChange={onChange} />
       {/* <form onSubmit={handleSubmit}> */}
         {/* Your form elements */}
         {/* <button type="submit">Submit</button> */}
