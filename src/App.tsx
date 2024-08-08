@@ -3,16 +3,17 @@ import DropdownMenu from './components/DropdownMenu';
 import GenerateSongButton from './components/GenerateSongButton';
 import RefreshInputMenusButton from './components/RefreshInputMenusButton';
 import ResubmitPromptButton from './components/ResubmitPromptButton';
+import ReCAPTCHA from "react-google-recaptcha";
 import './App.css';
 
-declare global {
-  interface Window {
-    grecaptcha: {
-      ready: (callback: () => void) => void;
-      execute: (siteKey: string, params: { action: string }) => Promise<string>;
-    };
-  }
-}
+// declare global {
+//   interface Window {
+//     grecaptcha: {
+//       ready: (callback: () => void) => void;
+//       execute: (siteKey: string, params: { action: string }) => Promise<string>;
+//     };
+//   }
+// }
 
 const App: React.FC = () => {
   const [mood, setMood] = useState<string>('');
@@ -21,37 +22,37 @@ const App: React.FC = () => {
   const [songUrl, setSongUrl] = useState<string>('');
   const [songName, setSongName] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [captchaToken, setCaptchaToken] = useState<string>('');
+  // const [captchaToken, setCaptchaToken] = useState<string>('');
 
   // removed handleSelect functions per Ansel's recommendation. Passed setter
   // functions via the onSelect prop in the DropdownMenu components.
 
-  // const onChange = () => {};
+  const onChange = () => {};
   
-  useEffect(() => {
-    // const script = document.createElement('script'); 
-    // script.src = "https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad";
-    // script.async = true;
-    // document.body.appendChild(script);
+  // useEffect(() => {
+  //   // const script = document.createElement('script'); 
+  //   // script.src = "https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad";
+  //   // script.async = true;
+  //   // document.body.appendChild(script);
 
-    window.grecaptcha.ready(() => {
-      window.grecaptcha.execute('6LfI_RsqAAAAACEnGBBLuWFGY6HqSTJBRZd9A-sG', { action: 'homepage' }).then(onCaptchaChange);
-    });
-  }, []);
+  //   window.grecaptcha.ready(() => {
+  //     window.grecaptcha.execute('6LfI_RsqAAAAACEnGBBLuWFGY6HqSTJBRZd9A-sG', { action: 'homepage' }).then(onCaptchaChange);
+  //   });
+  // }, []);
   
-  const onCaptchaChange = (token: string) => { setCaptchaToken(token); };
+  // const onCaptchaChange = (token: string) => { setCaptchaToken(token); };
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    // Send captchaToken to your backend for verification
-  };
+  // const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  //   event.preventDefault();
+  //   // Send captchaToken to your backend for verification
+  // };
   
 
 
 // code below returned error: Error: Missing required parameters: sitekey
-  // const siteKey: string = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
-  // console.log("printing import.meta.env:", import.meta.env);
-  // console.log("printing siteKey:", siteKey);
+  const siteKey: string = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
+  console.log("printing import.meta.env:", import.meta.env);
+  console.log("printing siteKey:", siteKey);
 
 
 
@@ -73,10 +74,10 @@ const App: React.FC = () => {
   return (
     <div>
       <h1>AutomatedGroove</h1>
-      {/* <ReCAPTCHA sitekey={siteKey} onChange={onChange} /> */}
-      <form onSubmit={handleSubmit}>
+      <ReCAPTCHA sitekey={siteKey} onChange={onChange} />
+      {/* <form onSubmit={handleSubmit}>
         <button type="submit">Submit</button>
-      </form>;
+      </form>; */}
       <DropdownMenu placeholder="Genre" options={["rock", "pop", "edm", "hiphop", "country"]} selectedOption={genre} onSelect={setGenre} />
       <DropdownMenu placeholder="Tempo" options={["slow", "medium", "fast"]} selectedOption={tempo} onSelect={setTempo} />
       <DropdownMenu placeholder="Mood" options={["happy", "sad", "angry", "romantic", "euphoric"]} selectedOption={mood} onSelect={setMood} />
