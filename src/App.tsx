@@ -82,10 +82,9 @@ const App: React.FC = () => {
       <DropdownMenu placeholder="Genre" options={["rock", "pop", "edm", "hiphop", "country"]} selectedOption={genre} onSelect={setGenre} />
       <DropdownMenu placeholder="Tempo" options={["slow", "medium", "fast"]} selectedOption={tempo} onSelect={setTempo} />
       <DropdownMenu placeholder="Mood" options={["happy", "sad", "angry", "romantic", "euphoric"]} selectedOption={mood} onSelect={setMood} />
-      <ReCAPTCHA sitekey={siteKey} onChange={onChange} />
       {/* <form onSubmit={handleSubmit}>
         <button type="submit">Submit</button>
-      </form>; */}
+        </form>; */}
       <div>
         <GenerateSongButton
           genre={genre}
@@ -95,10 +94,11 @@ const App: React.FC = () => {
           setSongName={setSongName}
           isLoading={isLoading}
           setIsLoading={setIsLoading}/>
+        <ReCAPTCHA sitekey={siteKey} onChange={onChange} />
       </div>
       <div>
         {isLoading ? 
-        <img className="loadingGif" src='./src/assets/giphy1.gif' />
+        <img className="loadingGif" src='/assets/giphy1.gif' />
         : songName}
       </div>
       <div>
