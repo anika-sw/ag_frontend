@@ -5,15 +5,7 @@ import RefreshInputMenusButton from './components/RefreshInputMenusButton';
 import ResubmitPromptButton from './components/ResubmitPromptButton';
 import ReCAPTCHA from "react-google-recaptcha";
 import './App.css';
-
-// declare global {
-//   interface Window {
-//     grecaptcha: {
-//       ready: (callback: () => void) => void;
-//       execute: (siteKey: string, params: { action: string }) => Promise<string>;
-//     };
-//   }
-// }
+import { onChange } from '../utils/api';
 
 const App: React.FC = () => {
   const [mood, setMood] = useState<string>('');
@@ -22,46 +14,20 @@ const App: React.FC = () => {
   const [songUrl, setSongUrl] = useState<string>('');
   const [songName, setSongName] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  // const [captchaToken, setCaptchaToken] = useState<string>('');
 
-  // removed handleSelect functions per Ansel's recommendation. Passed setter
-  // functions via the onSelect prop in the DropdownMenu components.
-
-  const onChange = () => {};
-  
-  // useEffect(() => {
-  //   // const script = document.createElement('script'); 
-  //   // script.src = "https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad";
-  //   // script.async = true;
-  //   // document.body.appendChild(script);
-
-  //   window.grecaptcha.ready(() => {
-  //     window.grecaptcha.execute('6LfI_RsqAAAAACEnGBBLuWFGY6HqSTJBRZd9A-sG', { action: 'homepage' }).then(onCaptchaChange);
-  //   });
-  // }, []);
-  
-  // const onCaptchaChange = (token: string) => { setCaptchaToken(token); };
-
-  // const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault();
-  //   // Send captchaToken to your backend for verification
-  // };
-  
-
+  // function onChange(value: string | null): void {
+  //   if (value) {
+  //     console.log("Captcha value:", value);
+  //   } else {
+  //     console.error("Captcha validation failed.");
+  //   }
+  // }
 
 // code below returned error: Error: Missing required parameters: sitekey
   const siteKey: string = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
   console.log("printing import.meta.env:", import.meta.env);
   console.log("printing siteKey:", siteKey);
 
-
-
-  // Troubleshooting attempts
-
-  // sitekey="6LfI_RsqAAAAACEnGBBLuWFGY6HqSTJBRZd9A-sG" no env var in AWS
-  //  returned error: Error: Missing required parameters: sitekey
-
-  // const apiKey = process.env.sitekey
 
   const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -82,9 +48,6 @@ const App: React.FC = () => {
       <DropdownMenu placeholder="Genre" options={["rock", "pop", "edm", "hiphop", "country"]} selectedOption={genre} onSelect={setGenre} />
       <DropdownMenu placeholder="Tempo" options={["slow", "medium", "fast"]} selectedOption={tempo} onSelect={setTempo} />
       <DropdownMenu placeholder="Mood" options={["happy", "sad", "angry", "romantic", "euphoric"]} selectedOption={mood} onSelect={setMood} />
-      {/* <form onSubmit={handleSubmit}>
-        <button type="submit">Submit</button>
-        </form>; */}
       <div>
         <GenerateSongButton
           genre={genre}
