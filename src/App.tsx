@@ -15,15 +15,7 @@ const App: React.FC = () => {
   const [songName, setSongName] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  // function onChange(value: string | null): void {
-  //   if (value) {
-  //     console.log("Captcha value:", value);
-  //   } else {
-  //     console.error("Captcha validation failed.");
-  //   }
-  // }
 
-// code below returned error: Error: Missing required parameters: sitekey
   const siteKey: string = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
   console.log("printing import.meta.env:", import.meta.env);
   console.log("printing siteKey:", siteKey);
