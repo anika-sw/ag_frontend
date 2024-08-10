@@ -6,8 +6,8 @@ interface CaptchaResponse {
 }
 
 export const apiCall1 = async (genre: string, mood: string, tempo: string) => {
-    const response = await fetch('https://ag-backend-caij.onrender.com/create_song', {
-    // const response = await fetch('http://localhost:5000/create_song', {
+    // const response = await fetch('https://ag-backend-caij.onrender.com/create_song', {
+    const response = await fetch('http://localhost:5000/create_song', {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json',
@@ -27,8 +27,8 @@ export const apiCall1 = async (genre: string, mood: string, tempo: string) => {
 
 
 export const apiCall2 = async (genre: string, mood: string, tempo: string) => {
-    const response = await fetch('https://ag-backend-caij.onrender.com/create_song_name', {
-        // const response = await fetch('http://localhost:5000/create_song_name', {
+    // const response = await fetch('https://ag-backend-caij.onrender.com/create_song_name', {
+        const response = await fetch('http://localhost:5000/create_song_name', {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json',
@@ -46,29 +46,29 @@ export const apiCall2 = async (genre: string, mood: string, tempo: string) => {
     return response.json();
 };
 
+export const onChange = async (value: string | null, setUserVerified: (verified: boolean) => void) => {
+    if (value) {
+        try {
+            const response = await fetch('http://localhost:5000/verify-recaptcha', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ token: value })
+            });
 
-export function onChange(value: string | null): void {
-        if (value) {
-            console.log("Captcha value:", value);
+            const data = await response.json();
 
-            fetch('https://ag-backend-caij.onrender.com/verify-recaptcha', { 
-            // fetch('http://localhost:5000/verify-recaptcha', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ token: value })
-            })
-            .then<CaptchaResponse>(response => response.json())
-            .then(data => {
-                if (data.success) {
-                console.log("Captcha verified successfully!");
-                // Proceed with your form submission or other actions
-                } else {
+            if (data.success) {
+                setUserVerified(true);  // Update state to true
+            } else {
                 console.error("Captcha verification failed:", data.error_codes);
-                // Handle failed verification (e.g., display error message)
-                }
-            })
-            .catch(error => console.error(error));
-        } else {
-            console.error("Captcha validation failed.");
+                setUserVerified(false);  // Update state to false
+            }
+        } catch (error) {
+            console.error("Error during captcha verification:", error);
+            setUserVerified(false);  // Update state to false in case of error
         }
-        }
+    } else {
+        console.error("Captcha validation failed.");
+        setUserVerified(false);  // Update state to false if no value
+    }
+};

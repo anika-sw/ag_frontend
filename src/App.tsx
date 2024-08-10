@@ -3,9 +3,8 @@ import DropdownMenu from './components/DropdownMenu';
 import GenerateSongButton from './components/GenerateSongButton';
 import RefreshInputMenusButton from './components/RefreshInputMenusButton';
 import ResubmitPromptButton from './components/ResubmitPromptButton';
-import ReCAPTCHA from "react-google-recaptcha";
 import './App.css';
-import { onChange } from '../utils/api';
+
 
 const App: React.FC = () => {
   const [mood, setMood] = useState<string>('');
@@ -14,11 +13,6 @@ const App: React.FC = () => {
   const [songUrl, setSongUrl] = useState<string>('');
   const [songName, setSongName] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
-
-
-  const siteKey: string = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
-  console.log("printing import.meta.env:", import.meta.env);
-  console.log("printing siteKey:", siteKey);
 
 
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -49,7 +43,6 @@ const App: React.FC = () => {
           setSongName={setSongName}
           isLoading={isLoading}
           setIsLoading={setIsLoading}/>
-        <ReCAPTCHA sitekey={siteKey} onChange={onChange} />
       </div>
       <div>
         {isLoading ? 

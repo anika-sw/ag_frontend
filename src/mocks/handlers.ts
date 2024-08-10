@@ -25,6 +25,11 @@ export const handlers = [
     return new HttpResponse(null, { status: 200 })
   }),
 
+  // // recaptcha api - in progress
+  // http.post('http://localhost:5000/verify-recaptcha', async ({ request }) => {
+  //   return new HttpResponse(null, { status: 200 });
+  // }),
+
   // You can add more handlers here as needed for other endpoints
 ];
 
