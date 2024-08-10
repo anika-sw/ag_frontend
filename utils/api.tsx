@@ -3,12 +3,11 @@ interface CaptchaResponse {
     challenge_ts: string;
     hostname: string;
     error_codes?: string[];
-  }
+}
 
 export const apiCall1 = async (genre: string, mood: string, tempo: string) => {
-    // const response = await fetch('https://ag-backend-caij.onrender.com/create_song', {
-    // const response = await fetch('http://flask-env.eba-np4xpmaq.us-east-2.elasticbeanstalk.com/create_song', {
-    const response = await fetch('http://localhost:5000/create_song', {
+    const response = await fetch('https://ag-backend-caij.onrender.com/create_song', {
+    // const response = await fetch('http://localhost:5000/create_song', {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json',
@@ -28,9 +27,8 @@ export const apiCall1 = async (genre: string, mood: string, tempo: string) => {
 
 
 export const apiCall2 = async (genre: string, mood: string, tempo: string) => {
-    // const response = await fetch('https://ag-backend-caij.onrender.com/create_song_name', {
-    // const response = await fetch('http://flask-env.eba-np4xpmaq.us-east-2.elasticbeanstalk.com/create_song_name', {
-        const response = await fetch('http://localhost:5000/create_song_name', {
+    const response = await fetch('https://ag-backend-caij.onrender.com/create_song_name', {
+        // const response = await fetch('http://localhost:5000/create_song_name', {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json',
@@ -53,7 +51,8 @@ export function onChange(value: string | null): void {
         if (value) {
             console.log("Captcha value:", value);
 
-            fetch('http://localhost:5000/verify-recaptcha', {
+            fetch('https://ag-backend-caij.onrender.com/verify-recaptcha', { 
+            // fetch('http://localhost:5000/verify-recaptcha', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ token: value })
