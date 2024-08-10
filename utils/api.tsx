@@ -63,12 +63,12 @@ export function onChange(value: string | null): void {
                 console.log("Captcha verified successfully!");
                 // Proceed with your form submission or other actions
                 } else {
-                console.error("Captcha verification failed:", data.error_codes);
+                console.error("Captcha verification failed 1:", data.error_codes);
                 // Handle failed verification (e.g., display error message)
                 }
             })
             .catch(error => console.error(error));
         } else {
-            console.error("Captcha validation failed.");
+            console.error("Captcha validation failed 2.");
         }
         }
