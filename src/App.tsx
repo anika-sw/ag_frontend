@@ -74,30 +74,36 @@ const App: React.FC = () => {
         </section>
       </div>
       <section className='make-groove'>
-        <h2>Are you ready? Let's groove.</h2>
-        <DropdownMenu placeholder="Genre" options={["rock", "pop", "edm", "hiphop", "country"]} selectedOption={genre} onSelect={setGenre} />
-        <DropdownMenu placeholder="Tempo" options={["slow", "medium", "fast"]} selectedOption={tempo} onSelect={setTempo} />
-        <DropdownMenu placeholder="Mood" options={["happy", "sad", "angry", "romantic", "euphoric"]} selectedOption={mood} onSelect={setMood} />
-        <div>
-          <GenerateSongButton
-            genre={genre}
-            mood={mood}
-            tempo={tempo}
-            setSongUrl={setSongUrl}
-            setSongName={setSongName}
-            isLoading={isLoading}
-            setIsLoading={setIsLoading}
-            setSongGenerated={setSongGenerated}/>
-            <p>Select genre, tempo, and mood to generate song</p>
-        </div>
+        { (!songGenerated && !isLoading) &&
+        <>
+          <h2>Are you ready? Let's groove.</h2>
+          <DropdownMenu placeholder="Genre" options={["rock", "pop", "edm", "hiphop", "country"]} selectedOption={genre} onSelect={setGenre} />
+          <DropdownMenu placeholder="Tempo" options={["slow", "medium", "fast"]} selectedOption={tempo} onSelect={setTempo} />
+          <DropdownMenu placeholder="Mood" options={["happy", "sad", "angry", "romantic", "euphoric"]} selectedOption={mood} onSelect={setMood} />
+          <div>
+            <GenerateSongButton
+              genre={genre}
+              mood={mood}
+              tempo={tempo}
+              setSongUrl={setSongUrl}
+              setSongName={setSongName}
+              isLoading={isLoading}
+              setIsLoading={setIsLoading}
+              setSongGenerated={setSongGenerated}/>
+              <p>Select genre, tempo, and mood to generate song</p>
+          </div>
+        </>
+        }
       </section>
       <section>
-        <div>
-          <>Finding the groove...</>
-          {isLoading ?
-          <img className="loadingGif" src='/assets/giphy1.gif' />
-          : songName}
-        </div>
+      {isLoading &&
+        <>
+          <h2>Finding the groove...</h2>
+          <div>
+            <img className="loadingGif" src='/assets/giphy1.gif' />
+          </div>
+        </>
+        }
       </section>
       <section>
       { songGenerated &&
@@ -106,6 +112,7 @@ const App: React.FC = () => {
             <h2>Get into your groove!</h2>
             <div>
               <audio ref={audioRef} src={songUrl} controls data-testid="audio-player"/>
+              <div>{songName}</div>
             </div>
           </div>
           <div>
