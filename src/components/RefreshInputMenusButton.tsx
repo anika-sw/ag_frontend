@@ -23,7 +23,7 @@ const RefreshInputMenusButton: React.FC<ButtonProps> = ({ setMood, setTempo, set
 
   return (
     <>
-      <button onClick={handleClick}>Refresh Inputs</button>
+      <button onClick={handleClick}>Change my groove preferences</button>
     </>
   );
 };

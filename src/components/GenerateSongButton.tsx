@@ -76,7 +76,7 @@ const GenerateSongButton: React.FC<ButtonProps> = ({ genre, mood, tempo, setSong
                 disabled={isButtonDisabled} 
                 className={isButtonDisabled ? 'disabled-button' : ''}
             >
-                Generate Song
+                Generate Groove
             </button>
         </div>
     );

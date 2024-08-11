@@ -32,7 +32,7 @@ const ResubmitPromptButton: React.FC<ButtonProps> = ({ genre, mood, tempo, setSo
 
   return (
     <>
-      <button onClick={handleClick} disabled={isLoading}>Resubmit Prompt</button>
+      <button onClick={handleClick} disabled={isLoading}>Same preferences, new groove</button>
     </>
   );
 };
