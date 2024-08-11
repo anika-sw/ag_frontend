@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { apiCall1, apiCall2, onChange } from '../../utils/api';
+import './GenerateSongButton.css';
 
 interface ButtonProps {
     genre: string;
@@ -68,10 +69,12 @@ const GenerateSongButton: React.FC<ButtonProps> = ({ genre, mood, tempo, setSong
     return (
         <div>
             {widgetShowing &&
-                <ReCAPTCHA
-                    sitekey={siteKey}
-                    onChange={handleRecaptchaChange} // Handle the reCAPTCHA token here
-                />
+                <div className="grecaptcha">
+                    <ReCAPTCHA
+                        sitekey={siteKey}
+                        onChange={handleRecaptchaChange} // Handle the reCAPTCHA token here
+                    />
+                </div>
             }
             <button 
                 onClick={() => handleClick()} 
