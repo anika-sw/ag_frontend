@@ -13,6 +13,7 @@ const App: React.FC = () => {
   const [songUrl, setSongUrl] = useState<string>('');
   const [songName, setSongName] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [songGenerated, setSongGenerated] = useState<boolean>(false);
 
   const landingPageRef = useRef<HTMLDivElement>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -85,7 +86,8 @@ const App: React.FC = () => {
             setSongUrl={setSongUrl}
             setSongName={setSongName}
             isLoading={isLoading}
-            setIsLoading={setIsLoading}/>
+            setIsLoading={setIsLoading}
+            setSongGenerated={setSongGenerated}/>
             <p>Select genre, tempo, and mood to generate song</p>
         </div>
       </section>
@@ -98,28 +100,34 @@ const App: React.FC = () => {
         </div>
       </section>
       <section>
-        <p>Get into your groove!</p>
-        <div>
-          <audio ref={audioRef} src={songUrl} controls data-testid="audio-player"/>
-        </div>
-      </section>
-      <section>
-        <p>Here we groove again!</p>
-        <ResubmitPromptButton
-          genre={genre}
-          mood={mood}
-          tempo={tempo}
-          setSongUrl={setSongUrl}
-          setSongName={setSongName}
-          isLoading={isLoading}
-          setIsLoading={setIsLoading}/>
-        <RefreshInputMenusButton
-          setMood={setMood}
-          setTempo={setTempo}
-          setGenre={setGenre}
-          setSongUrl={setSongUrl}
-          setSongName={setSongName}
-          setIsLoading={setIsLoading}/>
+      { songGenerated &&
+        <>
+          <div>
+            <h2>Get into your groove!</h2>
+            <div>
+              <audio ref={audioRef} src={songUrl} controls data-testid="audio-player"/>
+            </div>
+          </div>
+          <div>
+            <h2>Here we groove again!</h2>
+            <ResubmitPromptButton
+              genre={genre}
+              mood={mood}
+              tempo={tempo}
+              setSongUrl={setSongUrl}
+              setSongName={setSongName}
+              isLoading={isLoading}
+              setIsLoading={setIsLoading}/>
+            <RefreshInputMenusButton
+              setMood={setMood}
+              setTempo={setTempo}
+              setGenre={setGenre}
+              setSongUrl={setSongUrl}
+              setSongName={setSongName}
+              setIsLoading={setIsLoading}/>
+          </div>
+        </>
+        }
       </section>
       <section>
         <div>

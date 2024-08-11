@@ -10,9 +10,10 @@ interface ButtonProps {
     setSongName: (name: string) => void;
     isLoading: boolean;
     setIsLoading: (loading: boolean) => void;
+    setSongGenerated: (generated: boolean) => void;
 }
 
-const GenerateSongButton: React.FC<ButtonProps> = ({ genre, mood, tempo, setSongUrl, setSongName, isLoading, setIsLoading }) => {
+const GenerateSongButton: React.FC<ButtonProps> = ({ genre, mood, tempo, setSongUrl, setSongName, isLoading, setIsLoading, setSongGenerated }) => {
     const [userVerified, setUserVerified] = useState<boolean>(false);
     const [widgetShowing, setWidgetShowing] = useState<boolean>(false);
 
@@ -34,6 +35,7 @@ const GenerateSongButton: React.FC<ButtonProps> = ({ genre, mood, tempo, setSong
                 apiCall2(genre, mood, tempo),
             ]);
             setSongUrl(response1[0].file_url);
+            setSongGenerated(true);
             setSongName(response2);
         } catch (error) {
             console.error('Error:', error);
