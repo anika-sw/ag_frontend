@@ -1,6 +1,4 @@
 .grecaptcha {
-    margin: auto;
-    width: 50%;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin: 30px auto;
+    width: 304px;
 }
