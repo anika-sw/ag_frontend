@@ -117,14 +117,16 @@ const App: React.FC = () => {
               setSongUrl={setSongUrl}
               setSongName={setSongName}
               isLoading={isLoading}
-              setIsLoading={setIsLoading}/>
+              setIsLoading={setIsLoading}
+              setSongGenerated={setSongGenerated}/>
             <RefreshInputMenusButton
               setMood={setMood}
               setTempo={setTempo}
               setGenre={setGenre}
               setSongUrl={setSongUrl}
               setSongName={setSongName}
-              setIsLoading={setIsLoading}/>
+              setIsLoading={setIsLoading}
+              setSongGenerated={setSongGenerated}/>
           </div>
         </>
         }

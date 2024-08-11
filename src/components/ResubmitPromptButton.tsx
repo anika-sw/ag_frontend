@@ -9,13 +9,15 @@ interface ButtonProps {
   setSongName: (name: string) => void;
   isLoading: boolean;
   setIsLoading: (loading: boolean) => void;
+  setSongGenerated: (generated: boolean) => void
 }
 
-const ResubmitPromptButton: React.FC<ButtonProps> = ({ genre, mood, tempo, setSongUrl, setSongName, isLoading, setIsLoading }) => {
+const ResubmitPromptButton: React.FC<ButtonProps> = ({ genre, mood, tempo, setSongUrl, setSongName, isLoading, setIsLoading, setSongGenerated }) => {
 
   const handleClick = async () => {
     setSongName('Loading...');
     setIsLoading(true);
+    setSongGenerated(false);
     try {
       const [response1, response2] = await Promise.all([
         apiCall1(genre, mood, tempo),
