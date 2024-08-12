@@ -7,12 +7,11 @@ interface ButtonProps {
   tempo: string;
   setSongUrl: (url: string) => void;
   setSongName: (name: string) => void;
-  isLoading: boolean;
   setIsLoading: (loading: boolean) => void;
   setSongGenerated: (generated: boolean) => void
 }
 
-const ResubmitPromptButton: React.FC<ButtonProps> = ({ genre, mood, tempo, setSongUrl, setSongName, isLoading, setIsLoading, setSongGenerated }) => {
+const ResubmitPromptButton: React.FC<ButtonProps> = ({ genre, mood, tempo, setSongUrl, setSongName, setIsLoading, setSongGenerated }) => {
 
   const handleClick = async () => {
     setSongName('Loading...');
@@ -25,6 +24,7 @@ const ResubmitPromptButton: React.FC<ButtonProps> = ({ genre, mood, tempo, setSo
       ]);
       setSongUrl(response1[0].file_url); // Update the song URL in the App component
       setSongName(response2); // Update the song name
+      setSongGenerated(true);
     } catch (error) {
       console.error('Error:', error);
       setSongName('Error generating song'); // Display error
@@ -34,7 +34,7 @@ const ResubmitPromptButton: React.FC<ButtonProps> = ({ genre, mood, tempo, setSo
 
   return (
     <>
-      <button onClick={handleClick} disabled={isLoading}>Same preferences, new groove</button>
+      <button onClick={handleClick}>Same preferences, new groove</button>
     </>
   );
 };
