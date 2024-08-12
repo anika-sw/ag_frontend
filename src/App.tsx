@@ -77,9 +77,11 @@ const App: React.FC = () => {
         { (!songGenerated && !isLoading) &&
         <>
           <h2>Are you ready? Let's groove.</h2>
-          <DropdownMenu placeholder="Genre" options={["rock", "pop", "edm", "hiphop", "country"]} selectedOption={genre} onSelect={setGenre} />
-          <DropdownMenu placeholder="Tempo" options={["slow", "medium", "fast"]} selectedOption={tempo} onSelect={setTempo} />
-          <DropdownMenu placeholder="Mood" options={["happy", "sad", "angry", "romantic", "euphoric"]} selectedOption={mood} onSelect={setMood} />
+          <div className='dropdown-container'>
+            <DropdownMenu placeholder="Genre" options={["rock", "pop", "edm", "hiphop", "country"]} selectedOption={genre} onSelect={setGenre} />
+            <DropdownMenu placeholder="Tempo" options={["slow", "medium", "fast"]} selectedOption={tempo} onSelect={setTempo} />
+            <DropdownMenu placeholder="Mood" options={["happy", "sad", "angry", "romantic", "euphoric"]} selectedOption={mood} onSelect={setMood} />
+          </div>
           <div>
             <GenerateSongButton
               genre={genre}
@@ -138,16 +140,53 @@ const App: React.FC = () => {
         }
       </section>
       <section>
-        <div>
-          <p>FAQs</p>
+        <div className="faq">
+          <h2>FAQs</h2>
+          <ul>
+            <li>How long are songs that are created?</li>
+            <ul><li>15 seconds</li></ul>
+            <li>Can I download my song?</li>
+            <ul><li>Yes</li></ul>
+            <li>Is this royalty free music?</li>
+            <ul><li>Yes</li></ul>
+            <li>Do I need to credit AutomatedGroove?</li>
+            <ul><li>No</li></ul>
+          </ul>
           <p>Have a different question? Groovy. Get in touch.</p>
         </div>
       </section>
       <section>
         <div>
-          <p>The AutomatedGroove Group</p>
+          <h2>The AutomatedGroove Group</h2>
+          <div className="contact-container">
+            <div>
+              <img src="/assets/linkedin_kit.png" className="contact"></img>
+              <h3>Kit</h3>
+              <p>(She/Her)</p>
+              <a href='https://www.linkedin.com/in/kit-sutliff/' target="_blank">LinkedIn</a>
+            </div>
+            <div>
+              <img src="/assets/linkedin_sunny.jpeg" className="contact"></img>
+              <h3>Sunny</h3>
+              <p>(She/Her)</p>
+              <a href='https://www.linkedin.com/in/sunny-muniz-4838b8235/' target="_blank">LinkedIn</a>
+            </div>
+            <div>
+              <img src="/assets/linkedin_anika.jpeg" className="contact"></img>
+              <h3>Anika</h3>
+              <p>(She/Her)</p>
+              <a href='http://www.linkedin.com/in/anika-stephen-wilbur' target="_blank">LinkedIn</a>
+            </div>
+            <div>
+              <img src="/assets/linkedin_shelby.jpeg" className="contact"></img>
+              <h3>Shelby</h3>
+              <p>(She/They)</p>
+              <a href='https://www.linkedin.com/in/shelby-willis-57004a234/' target="_blank">LinkedIn</a>
+            </div>
+          </div>
         </div>
       </section>
+      <hr></hr>
       <footer className="footer">
         <p>&copy; AutomatedGroove. All rights reserved.</p>
       </footer>
