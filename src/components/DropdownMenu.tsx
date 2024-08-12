@@ -17,8 +17,14 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ options, onSelect, placehol
     setIsOpen(false);
   }, [selectedOption]);
 
-  const handleOptionClick = (option: string) => {
-    onSelect(option);
+  const handleOptionClick = (option: string) => { 
+    if (option === selectedOption) { 
+      // If the user selects the same option, close the dropdown 
+      setIsOpen(false); 
+    } else { 
+      // Otherwise, set the new selected option 
+      onSelect(option); 
+    } 
   };
 
   return (
