@@ -149,6 +149,9 @@ const App: React.FC = () => {
           <p>The AutomatedGroove Group</p>
         </div>
       </section>
+      <footer className="footer">
+        <p>&copy; AutomatedGroove. All rights reserved.</p>
+      </footer>
     </div>
   );
 };
