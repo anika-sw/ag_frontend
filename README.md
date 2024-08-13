@@ -133,6 +133,8 @@ ag_frontend/
 - **reCAPTCHA**: To verify a user is human.
 - **OpenAI API**: For AI text generation based on user prompts.
 - **MusicFy AI API**: For AI song generation based on user prompts.
+- **Vercel**: Frontend deployment platform.
+- **Render**: Backend deployment platform.
 
 
 ## License
