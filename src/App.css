@@ -15,6 +15,11 @@ body {
   background-color: #000000;
 }
 
+.faq {
+  font-size: 1.25rem;
+  font-weight: bolder;
+}
+
 .landing-page {
   position: relative;
   min-width: 100vw;
