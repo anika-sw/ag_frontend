@@ -39,18 +39,44 @@ const App: React.FC = () => {
 
   const scrollFunction = () => {
     const title: HTMLElement | null = document.getElementById('title');
-    if (title) { // Null check to ensure the element exists
+    if (title) {
       if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
         title.style.fontSize = "2.5rem";
-        title.style.height = '10vh'
+        title.style.height = '10vh';
       } else {
         title.style.fontSize = "7rem";
-        title.style.height = '30vh'
+        title.style.height = '30vh';
       }
     }
   };
-  
-  window.onscroll = scrollFunction;
+
+// useEffect added to handle correct title display on page load and scroll
+  useEffect(() => {
+    const title = document.getElementById('title');
+
+    // Disable transitions initially
+    if (title) {
+      title.classList.add('no-transition');
+    }
+
+    // Initialize title size on page load
+    scrollFunction();
+
+    // Re-enable transitions after initial load
+    setTimeout(() => {
+      if (title) {
+        title.classList.remove('no-transition');
+      }
+    }, 100); // Adjust timing as necessary
+
+    // Attach the scroll event listener
+    window.addEventListener('scroll', scrollFunction);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('scroll', scrollFunction);
+    };
+  }, []);
 
   return (
     <div>
