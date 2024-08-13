@@ -77,7 +77,7 @@ Find the backend repository here: [AutomatedGroove Backend](https://github.com/a
     ```
 
 - Run the `Mock Service Worker` testing framework in your brower to mock API calls:
-  1. Ensure all **code** is uncommented in the `main.tsx` file
+  1. Ensure all **code** is uncommented in the `main.tsx` file.
   2. Open your local deployment of the project in a browser with `npm run dev`.
   3. Open your `Develeper Tools` and navigate to the `Console` tab.
   4. If `Mock Service Worker` is running properly, the message `[MSW] Mocking enabled.` should appear.
@@ -128,7 +128,7 @@ ag_frontend/
 - **Vite**: For fast and efficient bundling and development.
 - **React**: A JavaScript library for building user interfaces.
 - **TypeScript**: For static type-checking and better developer tooling.
-- **Vitest**: 
+- **Vitest**: Testing framework specifically designed for Vite projects.
 - **Mock Service Worker**: For mocking network requests in the browser.
 - **reCAPTCHA**: To verify a user is human.
 - **OpenAI API**: For AI text generation based on user prompts.
