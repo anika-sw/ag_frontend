@@ -62,16 +62,16 @@ Find the backend repository here: [AutomatedGroove Backend](https://github.com/a
     npm run dev
     ```
 
-2. To access the application locally, open a web browser and go to [http://localhost:5173](http://localhost:5173).
+   To access the application locally, open a web browser and go to [http://localhost:5173](http://localhost:5173).
 
-3. To build for production, run:
+2. To build for production, run:
     ```sh
     npm run build
     ```
 
 ## Testing
 
-- Run the `vitest` testing framework in your local IDE:
+- Run the `vitest` testing framework in your local machine:
     ```sh
     npm run test
     ```
@@ -121,7 +121,7 @@ ag_frontend/
 
 - `npm run dev`: Starts the development server.
 - `npm run build`: Builds the project for production.
-- `npm run test`: Runs vitest in your local IDE.
+- `npm run test`: Runs vitest in your local machine.
 
 
 ## Technologies Used
