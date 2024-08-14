@@ -1,12 +1,27 @@
 .grecaptcha {
-    margin: 30px auto;
+    margin-top: inherit;
+    margin-right: auto;
+    margin-left: auto;
     width: 304px;
 }
 
-button {
-margin-top: 180px;
-height: 70px;
-width: 300px;
-border: 3px solid white;
-font-size: 1.5em
+.generate {
+    margin-top: 70px;
+    height: 70px;
+    width: 300px;
+}
+
+.generate {
+    font-size: 1.5rem !important;
+    font-weight: bold !important;
+    border: 2px solid white !important;
+}
+
+.generate:hover {
+    border: 2px solid #57e3e2 !important;
+}
+
+.generate.disabled-button {
+    cursor: not-allowed;
+    border: 2px solid #2e2e2e !important;
 }

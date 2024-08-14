@@ -1,5 +1,5 @@
-// components/RefreshInputMenusButton.tsx
 import React from 'react';
+import './RefreshInputMenus.css';
 
 interface ButtonProps {
   setMood: (mood: string) => void;
@@ -25,7 +25,7 @@ const RefreshInputMenusButton: React.FC<ButtonProps> = ({ setMood, setTempo, set
 
   return (
     <>
-      <button onClick={handleClick}>Change my groove preferences</button>
+      <button className='refresh' onClick={handleClick}>Change my groove preferences</button>
     </>
   );
 };

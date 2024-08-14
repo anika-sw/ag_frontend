@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { apiCall1, apiCall2 } from '../../utils/api';
+import './ResubmitPromptButton.css';
 
 interface ButtonProps {
   genre: string;
@@ -34,7 +35,7 @@ const ResubmitPromptButton: React.FC<ButtonProps> = ({ genre, mood, tempo, setSo
 
   return (
     <>
-      <button onClick={handleClick}>Same preferences, new groove</button>
+      <button className='resubmit' onClick={handleClick}>Same preferences, new groove</button>
     </>
   );
 };

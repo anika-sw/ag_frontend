@@ -1,19 +1,18 @@
 import { http, HttpResponse } from 'msw';
-import { mockSongNameResponse, mockSongFileResponse } from './mockData';
+import { mockSongNameResponse, mockSongFileResponse, mockRecaptchaResponse, mockRecaptchaRequest } from './mockData';
 
 export const handlers = [
-  http.post('http://localhost:5000/create_song', async ({ request }) => {
+  http.post('http://localhost:5000/create_song', async () => {
     // // inspect the request if needed
-    // console.log('Handler', request.method, request.url)
     return HttpResponse.json(mockSongFileResponse, { status: 200 });
   }),
 
-  http.post('http://localhost:5000/create_song_name', async ({ request }) => {
+  http.post('http://localhost:5000/create_song_name', async () => {
     return HttpResponse.json(mockSongNameResponse, { status: 200 });
   }),
 
   // loading gif
-  http.get('/assets/giphy1.gif', async ({ request }) => {
+  http.get('/assets/loading.gif', async () => {
     return new HttpResponse(null, {
       status: 200,
       statusText: 'OK: loaded gif',
@@ -21,29 +20,14 @@ export const handlers = [
   }),
 
   // src attribute of audio element in App creates a GET request to fetch the song
-  http.get('http://mock_musicfy_api.com/song.mp3', async ({ request }) => {
+  http.get('http://mock_musicfy_api.com/song.mp3', async () => {
     return new HttpResponse(null, { status: 200 })
   }),
 
-  // // recaptcha api - in progress
-  // http.post('http://localhost:5000/verify-recaptcha', async ({ request }) => {
-  //   return new HttpResponse(null, { status: 200 });
-  // }),
+  // recaptcha api
+  http.post('http://localhost:5000/verify-recaptcha', async (mockRecaptchaRequest) => {
+    return HttpResponse.json(mockRecaptchaResponse, { status: 200 });
+  }),
 
   // You can add more handlers here as needed for other endpoints
 ];
-
-// // mocking error response 
-// export const handlers = [
-//   http.get('/user', () => {
-//     // Respond with "401 Unauthorized" to "GET /user" requests.
-//     return new HttpResponse(null, { status: 401 })
-//   }),
-// ]
-
-// // mocking network error
-// export const handlers = [
-//   http.post('/checkout/cart', () => {
-//     return HttpResponse.error()
-//   }),
-// ]
