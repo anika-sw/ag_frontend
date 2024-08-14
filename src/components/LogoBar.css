@@ -1,10 +1,10 @@
 /* Container that holds the logo slider */
 .logo-container {
-  width: 100vw; /* Ensures the container spans the full viewport width */
-  overflow: hidden; /* Hides any content that overflows outside the container */
-  background-color: rgba(0, 0, 0, 0.4); /* Background color of the bar */
+  width: 100vw; /* Full viewport width */
+  overflow: hidden; /* Hide any content outside the container */
+  background-color: rgba(0, 0, 0, 0.4);
   padding-bottom: 50px;
-  margin-top: 0; /* Margin to separate the logo bar from other content */
+  margin-top: 0;
   margin-bottom: 30px;
 }
 
@@ -12,13 +12,29 @@
 .logo-slider {
   display: flex;
   align-items: center;
-  white-space: nowrap; /* Prevents the logos from wrapping to the next line */
-  overflow-x: hidden; /* Prevent horizontal scroll bar */
+  white-space: nowrap; /* Prevent wrapping */
+  overflow-x: hidden;
 }
 
-/* Each logo inside the slider */
+/* The logos inside the slider */
+.logos {
+  display: flex;
+  animation: scroll 50s linear infinite; /* Continuous scroll animation */
+}
+
 .logo {
-  height: 65px; /* Ensure the logos are all the same height */
-  margin-right: 100px; /* Space between logos for better spacing */
-  flex-shrink: 0; /* Prevent logos from shrinking */
+  height: 65px;
+  margin-right: 75px;
+  margin-left:75px;
+  flex-shrink: 0;
+}
+
+/* Keyframes to animate the scroll */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
