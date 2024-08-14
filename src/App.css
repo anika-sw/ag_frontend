@@ -15,18 +15,12 @@ body {
   background-color: #000000;
 }
 
-<<<<<<< HEAD
 body a {
   color:#57e3e2;
 }
 
 body a:hover {
   color:#a469e5;
-=======
-.faq {
-  font-size: 1.25rem;
-  font-weight: bolder;
->>>>>>> 00bc74b7605af8968df9ddd70e7a3498b8cdb3b4
 }
 
 .landing-page {
