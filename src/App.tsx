@@ -17,8 +17,6 @@ const App: React.FC = () => {
 
   const landingPageRef = useRef<HTMLDivElement>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
-  const loadingRef = useRef<HTMLDivElement>(null);
-  const grooveFlexRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (audioRef.current) {
@@ -80,19 +78,6 @@ const App: React.FC = () => {
     };
   }, []);
 
-  useEffect(() => {
-    if (isLoading && loadingRef.current) {
-      loadingRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [isLoading]);
-
-  useEffect(() => {
-    if (songGenerated && grooveFlexRef.current) {
-      grooveFlexRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }, [songGenerated]);
-
-
   const scrollToBottom = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     event.preventDefault();
     window.scrollTo({
@@ -145,7 +130,7 @@ const App: React.FC = () => {
           </section>
         }
         {isLoading &&
-          <section ref={loadingRef}>
+          <section>
               <h2>Finding the groove...</h2>
               <div>
                 <img className="loadingGif" src='/assets/loading.gif' />
@@ -154,7 +139,7 @@ const App: React.FC = () => {
         }
         { songGenerated &&
           <>
-            <section ref={grooveFlexRef} className='get-groove-flex'>
+            <section className='get-groove-flex'>
               <h2>Get into your groove!</h2>
               <div>
                 <audio ref={audioRef} src={songUrl} controls data-testid="audio-player"/>
