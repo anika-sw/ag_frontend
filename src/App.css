@@ -171,11 +171,15 @@ section {
   margin-bottom: 0px;
 }
 
-.faq{
+.faq {
   text-align: left;
   margin-left: 40px;
   font-weight: bold;
   font-size: 1.25rem;
+}
+
+.answer {
+  margin-bottom: 30px;
 }
 
 hr {
