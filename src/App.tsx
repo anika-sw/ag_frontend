@@ -175,14 +175,14 @@ const App: React.FC = () => {
           <div className="faq">
             <h2>FAQs</h2>
             <ul>
-              <li>How long are songs that are created?</li>
-              <ul><li>15 seconds</li></ul>
+              <li>How long are the generated songs?</li>
+              <ul><li>15 seconds.</li></ul>
               <li>Can I download my song?</li>
-              <ul><li>Yes</li></ul>
-              <li>Is this royalty free music?</li>
-              <ul><li>Yes</li></ul>
+              <ul><li>Yes. Once a song has loaded, click the three vertical dots on the audio player for download option.Yes</li></ul>
+              <li>Is this royalty-free music?</li>
+              <ul><li>Yes.</li></ul>
               <li>Do I need to credit AutomatedGroove?</li>
-              <ul><li>No</li></ul>
+              <ul><li>No.</li></ul>
             </ul>
             <p>
               Have a different question? Groovy. <a href="#" onClick={(event) => scrollToBottom(event)} style={{ fontWeight: 'bold' }}>Get in touch.</a>
