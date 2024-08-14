@@ -178,7 +178,7 @@ const App: React.FC = () => {
               <li>How long are the generated songs?</li>
               <ul><li>15 seconds.</li></ul>
               <li>Can I download my song?</li>
-              <ul><li>Yes. Once a song has loaded, click the three vertical dots on the audio player for download option.Yes</li></ul>
+              <ul><li>Yes. Once a song has loaded, click the three vertical dots on the audio player for download option.</li></ul>
               <li>Is this royalty-free music?</li>
               <ul><li>Yes.</li></ul>
               <li>Do I need to credit AutomatedGroove?</li>
