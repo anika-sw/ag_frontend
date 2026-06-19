@@ -176,7 +176,7 @@ const App: React.FC = () => {
             <h2>FAQs</h2>
             <ul>
               <li>How long are the generated songs?</li>
-              <ul className='answer'><li>15 seconds.</li></ul>
+              <ul className='answer'><li>30 seconds.</li></ul>
               <li>Can I download my song?</li>
               <ul className='answer'><li>Yes. Once a song has loaded, click the three vertical dots on the audio player for the download option.</li></ul>
               <li>Is this royalty-free music?</li>
@@ -198,13 +198,11 @@ const App: React.FC = () => {
                 <img src="/assets/linkedin_kit.png" className="contact"></img>
                 <h3>Kit</h3>
                 <p>(She/Her)</p>
-                <a href='https://www.linkedin.com/in/kit-sutliff/' target="_blank">LinkedIn</a>
               </div>
               <div>
                 <img src="/assets/linkedin_sunny.jpeg" className="contact"></img>
                 <h3>Sunny</h3>
                 <p>(She/Her)</p>
-                <a href='https://www.linkedin.com/in/sunny-muniz-4838b8235/' target="_blank">LinkedIn</a>
               </div>
               <div>
                 <img src="/assets/linkedin_anika.jpeg" className="contact"></img>
@@ -216,7 +214,6 @@ const App: React.FC = () => {
                 <img src="/assets/linkedin_shelby.jpeg" className="contact"></img>
                 <h3>Shelby</h3>
                 <p>(She/They)</p>
-                <a href='https://www.linkedin.com/in/shelby-willis-57004a234/' target="_blank">LinkedIn</a>
               </div>
             </div>
           </div>
@@ -224,7 +221,7 @@ const App: React.FC = () => {
       </div>
       <hr></hr>
       <footer className="footer">
-        <p>&copy; AutomatedGroove. All rights reserved.</p>
+        <p>&copy; AutomatedGroove v2. All rights reserved.</p>
       </footer>
     </div>
   );
