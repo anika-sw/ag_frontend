@@ -1,13 +1,14 @@
 import { http, HttpResponse } from 'msw';
-import { mockSongNameResponse, mockSongFileResponse, mockRecaptchaResponse, mockRecaptchaRequest } from './mockData';
+import { mockSongNameResponse, mockSongFileResponse, mockRecaptchaResponse } from './mockData';
 
 export const handlers = [
-  http.post('http://localhost:5000/create_song', async () => {
-    // // inspect the request if needed
+  http.post('*/create_song', async () => {
+    // TODO: remove delay before shipping — for animation preview only
+    await new Promise(resolve => setTimeout(resolve, 30000));
     return HttpResponse.json(mockSongFileResponse, { status: 200 });
   }),
 
-  http.post('http://localhost:5000/create_song_name', async () => {
+  http.post('*/create_song_name', async () => {
     return HttpResponse.json(mockSongNameResponse, { status: 200 });
   }),
 
@@ -25,7 +26,7 @@ export const handlers = [
   }),
 
   // recaptcha api
-  http.post('http://localhost:5000/verify-recaptcha', async (mockRecaptchaRequest) => {
+  http.post('*/verify-recaptcha', async () => {
     return HttpResponse.json(mockRecaptchaResponse, { status: 200 });
   }),
 

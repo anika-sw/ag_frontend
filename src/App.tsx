@@ -4,6 +4,7 @@ import DropdownMenu from './components/DropdownMenu';
 import GenerateSongButton from './components/GenerateSongButton';
 import RefreshInputMenusButton from './components/RefreshInputMenusButton';
 import ResubmitPromptButton from './components/ResubmitPromptButton';
+import MusicTechLoader from './components/MusicTechLoader';
 import './App.css';
 
 const App: React.FC = () => {
@@ -133,7 +134,7 @@ const App: React.FC = () => {
           <section>
               <h2>Finding the groove...</h2>
               <div>
-                <img className="loadingGif" src='/assets/loading.gif' />
+                <MusicTechLoader />
               </div>
           </section>
         }

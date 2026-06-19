@@ -1,0 +1,44 @@
+.music-tech-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  perspective: 800px;
+}
+
+
+.loader-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 380px;
+  height: 380px;
+}
+
+.loader-card img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.loader-card img.img-large {
+  transform: scale(1.4);
+}
+
+.loader-card.flip-out {
+  animation: flip-out 900ms ease-in forwards;
+}
+
+.loader-card.flip-in {
+  animation: flip-in 900ms ease-out forwards;
+}
+
+@keyframes flip-out {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(-450deg); }
+}
+
+@keyframes flip-in {
+  from { transform: rotateY(450deg); }
+  to   { transform: rotateY(0deg); }
+}
