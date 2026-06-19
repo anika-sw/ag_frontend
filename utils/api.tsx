@@ -6,7 +6,7 @@ interface CaptchaResponse {
 }
 
 export const apiCall1 = async (genre: string, mood: string, tempo: string) => {
-    const response = await fetch('https://automated-groove-be-94630e8aec30.herokuapp.com/create_song', {
+    const response = await fetch('https://ag-backend-j5vp.onrender.com/create_song', {
     // const response = await fetch('http://localhost:5000/create_song', {
         method: 'POST',
         headers: {
@@ -27,7 +27,7 @@ export const apiCall1 = async (genre: string, mood: string, tempo: string) => {
 
 
 export const apiCall2 = async (genre: string, mood: string, tempo: string) => {
-    const response = await fetch('https://automated-groove-be-94630e8aec30.herokuapp.com/create_song_name', {
+    const response = await fetch('https://ag-backend-j5vp.onrender.com/create_song_name', {
     // const response = await fetch('http://localhost:5000/create_song_name', {
         method: 'POST',
         headers: {
@@ -49,7 +49,7 @@ export const apiCall2 = async (genre: string, mood: string, tempo: string) => {
 export const onChange = async (value: string | null, setUserVerified: (verified: boolean) => void) => {
     if (value) {
         try {
-            const response = await fetch('https://automated-groove-be-94630e8aec30.herokuapp.com/verify-recaptcha', {
+            const response = await fetch('https://ag-backend-j5vp.onrender.com/verify-recaptcha', {
             // const response = await fetch('http://localhost:5000/verify-recaptcha', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
