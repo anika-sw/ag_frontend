@@ -4,6 +4,13 @@ Streaming services automatically scan audio for copyrighted content, and mute or
 
 Find the backend repository here: [AutomatedGroove Backend](https://github.com/anika-sw/ag_backend)
 
+---
+
+### v2 Update
+
+The original version of this app used the **MusicFy AI API** for song generation. As of v2, the backend has been migrated to the **ElevenLabs Music API**, as the MusicFy API is no longer reliably operational. The frontend has been updated accordingly: the backend URL is now configured via a `VITE_BACKEND_URL` environment variable, and relative audio file paths returned by the new backend are resolved to full URLs before playback.
+
+---
 
 ## Table of Contents
 
@@ -34,11 +41,15 @@ Find the backend repository here: [AutomatedGroove Backend](https://github.com/a
 
 ## Configuration
 
-1. Set the following environment variable in a `.env` file:
+1. Set the following environment variables in a `.env` file:
 
 -  `VITE_RECAPTCHA_SITE_KEY`
 
     >_Note: You need to obtain your own API key from **Google Cloud** to use in this project._
+
+-  `VITE_BACKEND_URL`
+
+    >_The base URL of the AutomatedGroove backend (e.g. `https://your-backend.onrender.com`). Used to resolve audio file paths returned by the server._
 
 
 2. Add the following code to a `vite-env.d.ts` file:
@@ -46,8 +57,8 @@ Find the backend repository here: [AutomatedGroove Backend](https://github.com/a
     /// <reference types="vite/client" />
 
     interface ImportMetaEnv {
-        // Add other environment variables here as needed
         readonly VITE_RECAPTCHA_SITE_KEY: string;
+        readonly VITE_BACKEND_URL: string;
     }
 
     interface ImportMeta {
@@ -132,7 +143,7 @@ ag_frontend/
 - **Mock Service Worker**: For mocking network requests in the browser.
 - **reCAPTCHA**: To verify a user is human.
 - **OpenAI API**: For AI text generation based on user prompts.
-- **MusicFy AI API**: For AI song generation based on user prompts.
+- **ElevenLabs Music API**: For AI song generation based on user prompts (v2+; replaced MusicFy AI API).
 - **Vercel**: Frontend deployment platform.
 - **Render**: Backend deployment platform.
 

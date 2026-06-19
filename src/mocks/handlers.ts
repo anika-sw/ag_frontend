@@ -20,7 +20,7 @@ export const handlers = [
   }),
 
   // src attribute of audio element in App creates a GET request to fetch the song
-  http.get('http://mock_musicfy_api.com/song.mp3', async () => {
+  http.get('*/songs/mock-song.mp3', async () => {
     return new HttpResponse(null, { status: 200 })
   }),
 

@@ -2,7 +2,7 @@ import { SongFile, RecaptchaResponse, RecaptchaRequest } from '../../utils/types
 
 export const mockSongFileResponse: SongFile[] = [
   {
-    file_url: 'http://mock_musicfy_api.com/song.mp3',
+    file_url: '/songs/mock-song.mp3',
     type: "music"
   }
 ];
