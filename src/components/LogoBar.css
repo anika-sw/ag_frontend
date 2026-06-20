@@ -2,7 +2,7 @@
 .logo-container {
   width: 100vw; /* Full viewport width */
   overflow: hidden; /* Hide any content outside the container */
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.6);
   padding-bottom: 50px;
   margin-top: 0;
   margin-bottom: 30px;

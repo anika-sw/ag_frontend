@@ -18,7 +18,6 @@ const App: React.FC = () => {
   const [songGenerated, setSongGenerated] = useState<boolean>(false);
   const [showScrollTop, setShowScrollTop] = useState<boolean>(false);
 
-  const landingPageRef = useRef<HTMLDivElement>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
   const loadingRef = useRef<HTMLElement>(null);
   const makeGrooveRef = useRef<HTMLElement>(null);
@@ -39,18 +38,6 @@ const App: React.FC = () => {
     }
   }, [isLoading]);
 
-  useEffect(() => {
-    if (landingPageRef.current) {
-      const landingPage = landingPageRef.current;
-      const logoBar = landingPage.querySelector('.logo-container');
-      const landingPageText = landingPage.querySelector('.landing-page-text');
-
-      if (logoBar && landingPageText) {
-        const totalHeight = logoBar.clientHeight + landingPageText.clientHeight;
-        landingPage.style.height = `${totalHeight}px`;
-      }
-    }
-  }, []);
 
   const scrollFunction = () => {
     const scrolled = document.body.scrollTop > 50 || document.documentElement.scrollTop > 50;
@@ -103,7 +90,7 @@ const App: React.FC = () => {
 
   return (
     <div>
-      <div ref={landingPageRef} className="landing-page">
+      <div className="landing-page">
         <video autoPlay muted loop className="background-video">
           <source src="/assets/musicnotes.mp4" type="video/mp4" />
         </video>

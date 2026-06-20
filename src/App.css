@@ -26,20 +26,26 @@ body a:hover {
 .landing-page {
   position: relative;
   min-width: 100vw;
-  height: 100%; /* Adjust height to be dynamic based on content */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  overflow: hidden; /* Prevents scrolling and ensures the video fills the entire container */
+  display: grid;
+  overflow: hidden;
 }
 
 .background-video {
-  position: absolute;
-  top: 100px;
-  left: 0;
+  grid-row: 1;
+  grid-column: 1;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center bottom;
+  pointer-events: none;
+  transform: translateY(min(175px, 19vh));
+}
+
+.landing-page-text {
+  grid-row: 1;
+  grid-column: 1;
+  position: relative;
+  z-index: 2;
 }
 
 .landing-page::before {
@@ -135,7 +141,7 @@ pre {
   margin: 0;
   padding: 15px 30px;
   color: #57e3e2;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 section {
