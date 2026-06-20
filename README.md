@@ -6,9 +6,13 @@ Find the backend repository here: [AutomatedGroove Backend](https://github.com/a
 
 ---
 
-### v2 Update
+### What's New in v2
 
-The original version of this app used the **MusicFy AI API** for song generation. As of v2, the backend has been migrated to the **ElevenLabs Music API**, as the MusicFy API is no longer reliably operational. The frontend has been updated accordingly: the backend URL is now configured via a `VITE_BACKEND_URL` environment variable, and relative audio file paths returned by the new backend are resolved to full URLs before playback.
+- **ElevenLabs integration** — migrated from MusicFy (defunct) to ElevenLabs for AI music generation
+- **Loading animation** — replaced static GIF with a retro music device carousel (boombox, cassette, record, and more)
+- **EQ visualizer** — real-time 64-bar frequency visualizer renders above the audio player during playback
+- **Smarter navigation** — auto-scrolls to the loading state when generation begins; scroll-to-top button appears on long pages
+- **Responsive design** — fluid typography and layout adjustments across mobile and tablet screen sizes
 
 ---
 
@@ -157,3 +161,13 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 - [**Sunny Muniz**](https://www.linkedin.com/in/sunny-muniz-4838b8235/)
 - [**Kit Sutliff**](https://www.linkedin.com/in/kit-sutliff/)
 - [**Anika Stephen Wilbur**](https://www.linkedin.com/in/anika-stephen-wilbur/)
+
+## Image Credits
+Loading animation images sourced from [Magnific](https://www.magnific.ai/):
+- Boombox — zirconicusso
+- Cassette — Freepik
+- CD — starline
+- Earpods — Xvect_intern
+- Headphones — xadartstudio
+- MP3 Player — Freepik
+- Record — xadartstudio
