@@ -4,6 +4,8 @@ Streaming services automatically scan audio for copyrighted content, and mute or
 
 Find the backend repository here: [AutomatedGroove Backend](https://github.com/anika-sw/ag_backend)
 
+Watch the [v1 capstone presentation](https://drive.google.com/file/d/1uDy4weauWhB9ye-EO-dD32LLNOLJLSIK/view?usp=sharing) (~5 min).
+
 ---
 
 ### What's New in v2
