@@ -144,6 +144,38 @@ audio {
   width: 600px;
 }
 
+.scroll-to-top {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  min-height: 50px;
+  padding: 0;
+  border-radius: 50%;
+  background-color: #57e3e2;
+  border: none;
+  color: #000000;
+  font-size: 2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  transition: background-color 0.2s;
+  outline: none;
+}
+
+.scroll-to-top:focus,
+.scroll-to-top:focus-visible {
+  outline: none;
+}
+
+.scroll-to-top:hover {
+  background-color: #3ec8c7;
+}
+
 .make-groove p {
   font-style: italic;
 }

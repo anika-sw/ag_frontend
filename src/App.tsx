@@ -16,15 +16,28 @@ const App: React.FC = () => {
   const [songName, setSongName] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [songGenerated, setSongGenerated] = useState<boolean>(false);
+  const [showScrollTop, setShowScrollTop] = useState<boolean>(false);
 
   const landingPageRef = useRef<HTMLDivElement>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const loadingRef = useRef<HTMLElement>(null);
+  const makeGrooveRef = useRef<HTMLElement>(null);
+  const contactRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.load();
     }
   }, [songUrl]);
+
+  useEffect(() => {
+    if (isLoading && loadingRef.current) {
+      const header = document.getElementById('title');
+      const headerHeight = header ? header.offsetHeight : 0;
+      const top = loadingRef.current.getBoundingClientRect().top + window.scrollY - headerHeight;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  }, [isLoading]);
 
   useEffect(() => {
     if (landingPageRef.current) {
@@ -40,9 +53,10 @@ const App: React.FC = () => {
   }, []);
 
   const scrollFunction = () => {
+    const scrolled = document.body.scrollTop > 50 || document.documentElement.scrollTop > 50;
     const title: HTMLElement | null = document.getElementById('title');
     if (title) {
-      if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+      if (scrolled) {
         title.style.fontSize = "2.5rem";
         title.style.height = '10vh';
       } else {
@@ -50,6 +64,7 @@ const App: React.FC = () => {
         title.style.height = '30vh';
       }
     }
+    setShowScrollTop(document.documentElement.scrollTop > 300);
   };
 
 // useEffect added to handle correct title display on page load and scroll
@@ -80,12 +95,12 @@ const App: React.FC = () => {
     };
   }, []);
 
-  const scrollToBottom = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+  const scrollToContact = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     event.preventDefault();
-    window.scrollTo({
-      top: document.documentElement.scrollHeight,
-      behavior: 'smooth'
-    });
+    const header = document.getElementById('title');
+    const headerHeight = header ? header.offsetHeight : 0;
+    const top = (contactRef.current?.getBoundingClientRect().top ?? 0) + window.scrollY - headerHeight;
+    window.scrollTo({ top, behavior: 'smooth' });
   };
 
   return (
@@ -111,7 +126,7 @@ const App: React.FC = () => {
       </div>
       <div className='content'>
         { (!songGenerated && !isLoading) &&
-          <section className='make-groove'>
+          <section className='make-groove' ref={makeGrooveRef}>
             <h2>Are you ready? Let's groove.</h2>
             <div className='dropdown-container'>
               <DropdownMenu placeholder="Genre" options={["rock", "pop", "edm", "hiphop", "country"]} selectedOption={genre} onSelect={setGenre} />
@@ -132,7 +147,7 @@ const App: React.FC = () => {
           </section>
         }
         {isLoading &&
-          <section>
+          <section ref={loadingRef}>
               <h2>Finding the groove...</h2>
               <div>
                 <MusicTechLoader />
@@ -168,7 +183,15 @@ const App: React.FC = () => {
                     setSongUrl={setSongUrl}
                     setSongName={setSongName}
                     setIsLoading={setIsLoading}
-                    setSongGenerated={setSongGenerated}/>
+                    setSongGenerated={setSongGenerated}
+                    onScrollToForm={() => {
+                      setTimeout(() => {
+                        const header = document.getElementById('title');
+                        const headerHeight = header ? header.offsetHeight : 0;
+                        const top = (makeGrooveRef.current?.getBoundingClientRect().top ?? 0) + window.scrollY - headerHeight;
+                        window.scrollTo({ top, behavior: 'smooth' });
+                      }, 50);
+                    }}/>
                 </div>
               </div>
             </section>
@@ -188,12 +211,12 @@ const App: React.FC = () => {
               <ul className='answer'><li>No.</li></ul>
             </ul>
             <p>
-              Have a different question? Groovy. <a href="#" onClick={(event) => scrollToBottom(event)} style={{ fontWeight: 'bold' }}>Get in touch.</a>
+              Have a different question? Groovy. <a href="#" onClick={(event) => scrollToContact(event)} style={{ fontWeight: 'bold' }}>Get in touch.</a>
             </p>
 
           </div>
         </section>
-        <section>
+        <section ref={contactRef}>
           <div>
             <h2>The AutomatedGroove Group</h2>
             <div className="contact-container">
@@ -222,6 +245,15 @@ const App: React.FC = () => {
           </div>
         </section>
       </div>
+      {showScrollTop && (
+        <button
+          className="scroll-to-top"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          aria-label="Scroll to top"
+        >
+          <span style={{ display: 'inline-block', transform: 'translateY(-2px)' }}>&#9650;</span>
+        </button>
+      )}
       <hr></hr>
       <footer className="footer">
         <p>&copy; AutomatedGroove v2. All rights reserved.</p>

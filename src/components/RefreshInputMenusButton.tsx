@@ -8,10 +8,11 @@ interface ButtonProps {
   setSongUrl: (url: string) => void;
   setSongName: (name: string) => void;
   setIsLoading: (loading: boolean) => void;
-  setSongGenerated: (generated: boolean) => void
+  setSongGenerated: (generated: boolean) => void;
+  onScrollToForm: () => void;
 }
 
-const RefreshInputMenusButton: React.FC<ButtonProps> = ({ setMood, setTempo, setGenre, setSongUrl, setSongName, setIsLoading, setSongGenerated  }) => {
+const RefreshInputMenusButton: React.FC<ButtonProps> = ({ setMood, setTempo, setGenre, setSongUrl, setSongName, setIsLoading, setSongGenerated, onScrollToForm }) => {
 
   const handleClick = () => {
     setIsLoading(false);
@@ -21,6 +22,7 @@ const RefreshInputMenusButton: React.FC<ButtonProps> = ({ setMood, setTempo, set
     setSongUrl('');
     setSongName('');
     setSongGenerated(false);
+    onScrollToForm();
   };
 
   return (
