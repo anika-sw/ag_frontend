@@ -145,7 +145,7 @@ const App: React.FC = () => {
               <h2>Get into your groove!</h2>
               <div>
                 <AudioVisualizer audioRef={audioRef} />
-                <audio ref={audioRef} src={songUrl} controls data-testid="audio-player"/>
+                <audio ref={audioRef} src={songUrl} controls crossOrigin="anonymous" data-testid="audio-player"/>
                 <div>{songName}</div>
               </div>
             </section>
