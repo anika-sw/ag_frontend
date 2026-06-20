@@ -5,6 +5,7 @@ import GenerateSongButton from './components/GenerateSongButton';
 import RefreshInputMenusButton from './components/RefreshInputMenusButton';
 import ResubmitPromptButton from './components/ResubmitPromptButton';
 import MusicTechLoader from './components/MusicTechLoader';
+import AudioVisualizer from './components/AudioVisualizer';
 import './App.css';
 
 const App: React.FC = () => {
@@ -143,6 +144,7 @@ const App: React.FC = () => {
             <section className='get-groove-flex'>
               <h2>Get into your groove!</h2>
               <div>
+                <AudioVisualizer audioRef={audioRef} />
                 <audio ref={audioRef} src={songUrl} controls data-testid="audio-player"/>
                 <div>{songName}</div>
               </div>

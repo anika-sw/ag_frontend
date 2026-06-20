@@ -1,0 +1,10 @@
+.audio-visualizer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.audio-visualizer canvas {
+  border-radius: 6px;
+  background-color: rgba(0, 0, 0, 0.6);
+}
