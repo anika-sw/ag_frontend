@@ -68,23 +68,23 @@ const GenerateSongButton: React.FC<ButtonProps> = ({ genre, mood, tempo, setSong
 
     return (
         <div>
-            {widgetShowing && 
-                <div className="grecaptcha `visibility : condition ? 'visible' : 'hidden`">
-                    <ReCAPTCHA
-                        sitekey={siteKey}
-                        onChange={handleRecaptchaChange} // Handle the reCAPTCHA token here
-                    />
-                </div>
-            }
             <button 
                 onClick={() => handleClick()} 
                 disabled={isButtonDisabled} 
                 className={`generate ${isButtonDisabled ? 'disabled-button' : ''}`}
-            >
+                >
                 Generate Groove
             </button>
             {!widgetShowing &&
             <p>Select genre, tempo, and mood to generate song</p>
+            }
+            {widgetShowing &&
+                <div className="grecaptcha">
+                    <ReCAPTCHA
+                        sitekey={siteKey}
+                        onChange={handleRecaptchaChange}
+                    />
+                </div>
             }
         </div>
     );

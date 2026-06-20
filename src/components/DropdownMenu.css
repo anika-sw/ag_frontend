@@ -12,10 +12,12 @@
 .dropdown-header {
   padding: 10px;
   border: 1px solid #ccc;
+  border-radius: 6px;
   cursor: pointer;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  gap: 8px;
 }
 
 .dropdown-list {
@@ -25,13 +27,13 @@
   width: 199px;
   border: 1px solid #ccc;
   border-top: none;
+  border-radius: 0 0 6px 6px;
   background-color: black;
   z-index: 1;
   max-height: 150px;
   overflow-y: auto;
   margin-top: 0px;
   padding-left: 0px;
-  
 }
 
 .dropdown-list-item {

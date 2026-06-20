@@ -3,12 +3,15 @@
     margin-right: auto;
     margin-left: auto;
     width: 304px;
+    border-radius: 6px;
+    overflow: hidden;
 }
 
 .generate {
-    margin-top: 70px;
-    height: 70px;
-    width: 300px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    height: 78px;
+    width: 304px;
 }
 
 .generate {
