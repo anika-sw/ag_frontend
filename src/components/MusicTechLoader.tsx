@@ -8,7 +8,6 @@ const images = [
   '/assets/music_tech_earpods_by_Xvect_intern_on_Magnific.png',
   '/assets/music_tech_headphones_by_xadartstudio_on_Magnific.png',
   '/assets/music_tech_mp3%20player%20by%20freepik.png',
-  '/assets/music_tech_phonograph_by_tohamina_on_Magnific.png',
   '/assets/music_tech_record_by_xadartstudio_on_Magnific.png',
 ];
 
