@@ -41,6 +41,12 @@ body a:hover {
   transform: translateY(min(175px, 19vh));
 }
 
+.video-overlay {
+  grid-row: 1;
+  grid-column: 1;
+  z-index: 1;
+}
+
 .landing-page-text {
   grid-row: 1;
   grid-column: 1;

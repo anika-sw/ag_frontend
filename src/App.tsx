@@ -91,9 +91,10 @@ const App: React.FC = () => {
   return (
     <div>
       <div className="landing-page">
-        <video autoPlay muted loop className="background-video">
+        <video autoPlay muted loop playsInline className="background-video">
           <source src="/assets/musicnotes.mp4" type="video/mp4" />
         </video>
+        <div className="video-overlay" />
         <section className='landing-page-text'>
           <h1 id='title'>AutomatedGroove</h1>
           <div className='intro'>
