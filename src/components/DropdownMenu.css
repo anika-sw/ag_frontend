@@ -42,7 +42,7 @@
   list-style-type: none;
 }
 
-dropdown-container {
+.dropdown-container {
   display: flex;
   justify-content: center;
 }
@@ -50,4 +50,23 @@ dropdown-container {
 .dropdown-list-item:hover {
   background-color: #f0f0f0;
   color: black;
+}
+
+@media (max-width: 600px) {
+  .dropdown-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .dropdown {
+    width: 80vw;
+    max-width: 280px;
+    margin-right: 0;
+    margin-left: 0;
+    margin-bottom: 16px;
+  }
+
+  .dropdown-list {
+    width: 100%;
+  }
 }

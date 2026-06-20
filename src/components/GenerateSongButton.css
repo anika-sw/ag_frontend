@@ -15,7 +15,7 @@
 }
 
 .generate {
-    font-size: 1.5rem !important;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem) !important;
     font-weight: bold !important;
     border: 2px solid white !important;
 }
@@ -27,4 +27,17 @@
 .generate.disabled-button {
     cursor: not-allowed;
     border: 2px solid #2e2e2e !important;
+}
+
+@media (max-width: 480px) {
+  .grecaptcha {
+    width: 90vw;
+    max-width: 304px;
+  }
+
+  .generate {
+    width: 90vw;
+    max-width: 304px;
+    height: 64px;
+  }
 }

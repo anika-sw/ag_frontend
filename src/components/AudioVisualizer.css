@@ -8,4 +8,16 @@
 .audio-visualizer canvas {
   border-radius: 6px;
   background-color: rgba(0, 0, 0, 0.6);
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .audio-visualizer {
+    margin-top: 50px;
+    padding: 0 16px;
+  }
+
+  .audio-visualizer canvas {
+    width: 100% !important;
+  }
 }

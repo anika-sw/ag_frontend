@@ -2,11 +2,20 @@
   margin: 30px;
   height: 200px;
   width: 300px;
-  font-size: 1.5rem;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
   font-weight: bold;
   border: 2px solid white;
 }
 
 .refresh:hover {
   border: 2px solid #57e3e2 !important;
+}
+
+@media (max-width: 480px) {
+  .refresh {
+    width: 80vw;
+    height: 140px;
+    font-size: 1.2rem;
+    margin: 15px;
+  }
 }

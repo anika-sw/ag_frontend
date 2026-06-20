@@ -42,3 +42,10 @@
   from { transform: rotateY(450deg); }
   to   { transform: rotateY(0deg); }
 }
+
+@media (max-width: 480px) {
+  .loader-card {
+    width: 260px;
+    height: 260px;
+  }
+}

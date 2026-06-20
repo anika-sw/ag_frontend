@@ -58,19 +58,18 @@ body a:hover {
   background: linear-gradient(to bottom, #000000 35%, transparent);
   text-align: center;
   font-weight: bold;
-  padding-bottom: 10vh;
   top: 0;
-  left: 0; /* Ensures the title is aligned with the left edge of the viewport */
-  width: 100%; /* Ensures the title takes the full width of the viewport */
+  left: 0;
+  width: 100%;
   display: flex;
-  align-items: flex-end; /* Vertically align text to the bottom */
-  justify-content: center; /* Horizontally center the text */
+  align-items: flex-end;
+  justify-content: center;
   z-index: 1000;
-  position: fixed; /* Keeps the title fixed at the top */
-  transition: font-size 0.2s, height 0.2s, padding 0.2s; /* Smooth transition for font size, height, and padding */
+  position: fixed;
+  transition: font-size 0.35s ease, height 0.35s ease, padding-bottom 0.35s ease;
 }
 
-/* Disable transitions initially - keeps title from having a 'zoom' effect on page load*/
+
 .no-transition {
   transition: none !important;
 }
@@ -80,7 +79,7 @@ h1 {
 }
 
 h2 {
-  font-size: 3rem
+  font-size: clamp(1.5rem, 4vw, 3rem);
 }
 
 .intro {
@@ -111,17 +110,17 @@ pre {
 }
 
 .sm-text {
-  font-size: 1.5rem;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
   font-weight: bold;
 }
 
 .md-text {
-  font-size: 2.5rem;
+  font-size: clamp(1.4rem, 3.3vw, 2.5rem);
   font-weight: bold;
 }
 
 .lg-text {
-  font-size: 3.5rem;
+  font-size: clamp(1.8rem, 4.7vw, 3.5rem);
   text-align: center;
   font-weight: bold;
 }
@@ -196,7 +195,7 @@ audio {
 .contact-container h3 {
   margin-bottom: 0px;
   margin-top: 0px;
-  font-size: 1.5rem;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
 }
 
 .contact-container p {
@@ -211,7 +210,7 @@ audio {
   text-align: left;
   margin-left: 40px;
   font-weight: bold;
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 1.7vw, 1.25rem);
 }
 
 .answer {
@@ -226,4 +225,38 @@ hr {
 .footer {
   text-align: center;
   margin: 40px;
+}
+
+/* ─── Tablet: ≤ 768px ─── */
+@media (max-width: 768px) {
+  .logo-bar-text { text-align: center; }
+
+  .content { max-width: 90vw; }
+
+  audio { width: 100%; max-width: 600px; }
+
+  .faq { margin-left: 20px; }
+
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact {
+    max-width: 220px;
+    max-height: 220px;
+  }
+}
+
+/* ─── Mobile: ≤ 480px ─── */
+@media (max-width: 480px) {
+  .content { max-width: 95vw; }
+
+  section { padding-bottom: 60px; }
+
+  audio { width: 100%; }
+
+  .faq { margin-left: 15px; }
+
+  .get-groove-flex { min-height: 280px; }
 }

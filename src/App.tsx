@@ -56,13 +56,11 @@ const App: React.FC = () => {
     const scrolled = document.body.scrollTop > 50 || document.documentElement.scrollTop > 50;
     const title: HTMLElement | null = document.getElementById('title');
     if (title) {
-      if (scrolled) {
-        title.style.fontSize = "2.5rem";
-        title.style.height = '10vh';
-      } else {
-        title.style.fontSize = "7rem";
-        title.style.height = '30vh';
-      }
+      const vw = window.innerWidth;
+      const collapsedSize = vw <= 480 ? '1.5rem' : '2.5rem';
+      title.style.fontSize = scrolled ? collapsedSize : 'min(10vw, 7rem)';
+      title.style.height = scrolled ? '10vh' : '30vh';
+      title.style.paddingBottom = scrolled ? '1rem' : '10vh';
     }
     setShowScrollTop(document.documentElement.scrollTop > 300);
   };
