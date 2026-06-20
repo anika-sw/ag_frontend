@@ -267,6 +267,11 @@ hr {
 @media (max-width: 480px) {
   pre { white-space: normal; }
 
+  .scroll-to-top {
+    bottom: 16px;
+    right: 16px;
+  }
+
   .content { max-width: 95vw; }
 
   section { padding-bottom: 60px; }
