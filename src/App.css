@@ -5,6 +5,7 @@ html {
   height: 100%;
   overflow-x: hidden; /* Prevent horizontal scroll */
   color: white;
+  color-scheme: dark;
 }
 
 body {
@@ -88,6 +89,12 @@ body a:hover {
 
 h1 {
   margin: 0;
+}
+
+button {
+  color: white;
+  background-color: transparent;
+  -webkit-appearance: none;
 }
 
 h2 {
