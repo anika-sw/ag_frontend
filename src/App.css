@@ -96,6 +96,7 @@ button {
   color: white;
   background-color: transparent;
   -webkit-appearance: none;
+  border-radius: 6px;
 }
 
 h2 {
