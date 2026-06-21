@@ -27,7 +27,7 @@ const RefreshInputMenusButton: React.FC<ButtonProps> = ({ setMood, setTempo, set
 
   return (
     <>
-      <button className='refresh' onClick={handleClick}>Change my groove preferences</button>
+      <button className='refresh' onClick={handleClick}>Change my groove<br />preferences</button>
     </>
   );
 };

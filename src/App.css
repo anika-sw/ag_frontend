@@ -251,6 +251,8 @@ hr {
   margin: 40px;
 }
 
+.mobile-break { display: none; }
+
 /* ─── Tablet: ≤ 768px ─── */
 @media (max-width: 768px) {
   .logo-bar-text { text-align: center; }
@@ -275,6 +277,8 @@ hr {
 /* ─── Mobile: ≤ 480px ─── */
 @media (max-width: 480px) {
   pre { white-space: normal; }
+
+  .mobile-break { display: inline; }
 
   .scroll-to-top {
     bottom: 16px;

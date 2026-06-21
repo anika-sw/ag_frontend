@@ -105,7 +105,7 @@ const App: React.FC = () => {
             <p className='lg-text'>Certified groovy by you.</p>
             <br />
             <br />
-            <p className='logo-bar-text'>Use with your favorite platforms. No restrictions. Ever.</p>
+            <p className='logo-bar-text'>Use with your favorite platforms.<br className='mobile-break' /> No restrictions. Ever.</p>
             <LogoBar />
           </div>
         </section>
