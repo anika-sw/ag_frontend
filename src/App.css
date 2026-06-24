@@ -249,6 +249,7 @@ hr {
 .footer {
   text-align: center;
   margin: 40px;
+  padding-bottom: 30px;
 }
 
 .mobile-break { display: none; }
